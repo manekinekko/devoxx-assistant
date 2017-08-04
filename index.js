@@ -7,7 +7,7 @@ exports.agent = function (request, response) {
     let assistant = new ApiAiAssistant({request, response});
     let actionMap = new Map();
 
-    actionMap.set("card-test", assistant => {
+    actionMap.set("input.card", assistant => {
         console.log("card-tets");
 
         assistant.tell("dummy");
