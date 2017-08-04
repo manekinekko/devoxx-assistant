@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "actions-on-google": "^1.2.0",
+    "ngrok": "^2.2.15",
     "node-fetch": "^1.7.1"
   }
 }
