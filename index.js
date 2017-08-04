@@ -1,17 +1,16 @@
 const ApiAiAssistant = require('actions-on-google').ApiAiAssistant;
 const fetch = require('node-fetch');
 
-exports.agent = function (request, response) {
+const intents = [
+    '_devoxxx.find_by_topic',
+    '_devoxxx.find_by_topic_more',
+    '_devoxxx.find_by_topic_next',
+];
+
+exports.agent = function(request, response) {
     console.log("start");
-
-    let assistant = new ApiAiAssistant({request, response});
+    let assistant = new ApiAiAssistant({ request, response });
     let actionMap = new Map();
-
-    actionMap.set("card-test", assistant => {
-        console.log("card-tets");
-
-        assistant.tell("dummy");
-    });
-
+    intents.forEach(intent => actionMap.set(intent, require(`./${intents}`)));
     assistant.handleRequest(actionMap);
 };
