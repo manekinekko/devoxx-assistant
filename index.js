@@ -12,6 +12,6 @@ exports.agent = function(request, response) {
     console.log("start");
     let assistant = new ApiAiAssistant({ request, response });
     let actionMap = new Map();
-    intents.forEach(intent => actionMap.set(intent, require(`./src/intents/${intent}`)(app)));
+    intents.forEach(intent => actionMap.set(intent, require(`./src/intents/${intent}`)));
     assistant.handleRequest(actionMap);
 };
