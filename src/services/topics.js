@@ -11,7 +11,13 @@ module.exports = () => {
             //     title: '',
             //     description: ''
             // };
+            const tracks = data.tracks;
 
-            return data.tracks;
+            tracks.map(track => {
+                track.title = track.title.replace(/(&amp;)/g, '&');
+                return track;
+            })
+
+            return tracks;
         });
 }

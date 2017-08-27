@@ -11,6 +11,24 @@ module.exports = (app) => {
 
                 if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
                     // show a carousel with the tracks icons
+
+                    let list = app.buildList(`Here are the available topics:`);
+
+                    for (let i = 0; i < topics.length; i++) {
+                        const topic = topics[i];
+
+                        list = list.addItems(
+                            app.buildOptionItem(topic.id, [topic.id])
+                            .setTitle(topic.title)
+                            .setDescription(topic.description)
+                            .setImage(`https://cfp.devoxx.be${topic.imgsrc}`, topic.imgsrc)
+                        );
+
+                        console.log('builing list with track', topic);
+                    }
+
+                    app.askWithList(`${list}. Which track are you interested in?`, list);
+
                 } else {
                     const titles = topics.map(topic => topic.title);
 
@@ -21,7 +39,7 @@ module.exports = (app) => {
                     // -->  bot: what topic?
                     // --> user: tell me more about "Modern Web"
 
-                    app.tell(`I found the following topics: ${ titles.join(' ') }.`);
+                    app.tell(`I found the following topics: ${ titles.join(', ') }.`);
                 }
 
             }
