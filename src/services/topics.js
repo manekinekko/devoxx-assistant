@@ -2,7 +2,7 @@ const devoxxApi = require('./utils/http');
 let __CACHE = [];
 
 module.exports = () => {
-    return devoxxApi(`tracks`)
+    return devoxxApi(`/tracks`)
         .then(data => {
 
             // TrackObject = {
@@ -18,6 +18,7 @@ module.exports = () => {
                 return track;
             })
 
+            // @todo(wch): should we limit this to 3 topics only?
             return tracks;
         });
 }
