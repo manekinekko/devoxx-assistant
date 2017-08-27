@@ -1,17 +1,33 @@
 {
-  "name": "devoxx-be-2017-agent",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "actions-on-google": "^1.2.0",
-    "ngrok": "^2.2.15",
-    "node-fetch": "^1.7.1"
-  }
+    "name": "devoxx-be-2017-agent",
+    "version": "1.0.0",
+    "description": "The ultimate chatbot for the Devoxx conferences",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "chatbot",
+        "bot",
+        "assistant",
+        "conference",
+        "devoxx"
+    ],
+    "contributors": [
+        "Wassim Chegham (@manekinekko)",
+        "Guillaume Laforge (@glaforge)"
+    ],
+    "license": "MIT",
+    "repository": {
+        "url": "https://source.developers.google.com/p/devoxx-be-2017/r/backend-code"
+    },
+    "dependencies": {
+        "@google-cloud/functions-emulator": "^1.0.0-alpha.22",
+        "actions-on-google": "^1.2.0",
+        "ngrok": "^2.2.15",
+        "node-fetch": "^1.7.1"
+    },
+    "devDependencies": {
+        "optimist": "^0.6.1"
+    }
 }
