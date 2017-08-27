@@ -1,4 +1,4 @@
-exports = function(app) {
+module.exports = (app) => {
     const talkType = app.getArgument('talk-type');
     const topic = app.getArgument('topic');
 
