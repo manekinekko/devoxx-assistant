@@ -2,7 +2,7 @@
 
 const argv = require('optimist')
     .demand('i')
-    .usage('Test an intent locally.\nUsage: ./test.js -i=[intent_name]')
+    .usage('Test an intent locally.\nUsage: ./test.js -i [intent_name]')
     .argv;
 const intent = argv.i;
 
