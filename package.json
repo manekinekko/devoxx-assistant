@@ -6,7 +6,7 @@
     "scripts": {
         "emulator:start": "functions start",
         "emulator:deploy": "functions deploy agent --entry-point=agent --trigger-http -p=devoxx-be-2017-agent",
-        "ngrok": "ngrok http 8010"
+        "ngrok": "ngrok http 8010 --subdomain=wassimchegham"
     },
     "keywords": [
         "chatbot",
@@ -25,7 +25,7 @@
     },
     "dependencies": {
         "@google-cloud/functions-emulator": "^1.0.0-alpha.25",
-        "actions-on-google": "^1.2.1",
+        "actions-on-google": "^1.5.1",
         "ngrok": "^2.2.21",
         "node-fetch": "^1.7.2"
     },
