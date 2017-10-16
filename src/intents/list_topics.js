@@ -1,4 +1,3 @@
-// @ts-check
 const topics = require('../services/topics');
 
 module.exports = (app) => {
@@ -18,7 +17,7 @@ module.exports = (app) => {
                         const topic = topics[i];
 
                         list = list.addItems(
-                            app.buildOptionItem(topic.id, [topic.id])
+                            app.buildOptionItem(`TRACK_${topic.id}`, [topic.id])
                             .setTitle(topic.title)
                             .setDescription(topic.description)
                             .setImage(`https://cfp.devoxx.be${topic.imgsrc}`, topic.imgsrc)
