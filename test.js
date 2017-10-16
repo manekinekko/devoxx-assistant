@@ -11,10 +11,15 @@ if (intent) {
         SurfaceCapabilities: {
             SCREEN_OUTPUT: false
         },
-        hasSurfaceCapability(capa) { return false },
+        hasSurfaceCapability() { return false },
         getArgument() { return '' },
         ask(text) { console.log(text) },
-        tell(text) { console.log(text) }
+        tell(text) { console.log(text) },
+        getContextArgument() {
+            return {
+                value: 'TRACK_xxx'
+            }
+        }
     };
     require(`./src/intents/${intent}`)(testApp);
 } else {
