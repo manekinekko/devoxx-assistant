@@ -1,18 +1,19 @@
-const DialogflowApp = require('actions-on-google').DialogflowApp;
-const fetch = require('node-fetch');
+const Actionary = require('./src/services/actionary');
 
-const intents = [
-    'find_by_topic',
-    // 'find_by_topic_more',
-    // 'find_by_topic_next',
-    'list_topics',
-    'actions.intent.OPTION'
+const ACTIONS = [
+  'com.devoxx.easter',
+  'com.devoxx.topic.list',
+  'com.devoxx.topic.select',
+  'com.devoxx.talk.current',
+  'com.devoxx.talk.find_by_topic',
+  'com.devoxx.talk.find_by_topic.next',
+  'com.devoxx.talk.find_by_topic.more'
 ];
 
 exports.agent = function(request, response) {
-    console.log("start");
-    let assistant = new DialogflowApp({ request, response });
-    let actionMap = new Map();
-    intents.forEach(intent => actionMap.set(intent, require(`./src/intents/${intent}`)));
-    assistant.handleRequest(actionMap);
+    console.log("starting the agent...");
+
+    new Actionary({request, response})
+      .setActions(ACTIONS)
+      .start();
 };
