@@ -1,32 +1,21 @@
-const devoxxApi = require('./utils/http');
-let __CACHE = [];
+const devoxxApi = require("./utils/http");
 
 module.exports = () => {
-    let schedules = [];
+  return devoxxApi(/* root api */).then(data => {
 
-    if (__CACHE.length > 0) {
-        return Promise.resolve(__CACHE);
-    }
+    // SchduleObject = {
+    //   proposalTypesId: [''],
+    //   label: '',
+    //   localisation: '',
+    //   days: [''],
+    //   locale: ['']
+    // }
 
-    return devoxxApi( /* root api */ ).then(data => {
+    // get the schedule of each day
+    const conferenceDyas = data.days.map(day => devoxxApi(`/schedules/${day.toLowerCase()}`));
 
-        // SchduleObject = {
-        //   proposalTypesId: [''],
-        //   label: '',
-        //   localisation: '',
-        //   days: [''],
-        //   locale: ['']
-        // }
-
-        // get the schedule of each day
-        const conferenceDyas = data.days.map(day => devoxxApi(`/schedules/${day.toLowerCase()}`));
-
-        // run once and cache the result
-        return Promise.all(conferenceDyas)
-            .then(data => data.map(d => d.slots))
-            .then(slots => {
-                __CACHE = [].concat(...slots);
-                return __CACHE;
-            });
-    });
-}
+    return Promise.all(conferenceDyas)
+      .then(data => data.map(d => d.slots))
+      .then(slots => [].concat(...slots));
+  });
+};
