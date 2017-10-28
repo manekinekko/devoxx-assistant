@@ -6,6 +6,8 @@
     "scripts": {
         "emulator:start": "functions start",
         "emulator:deploy": "functions deploy agent --entry-point=agent --trigger-http -p=devoxx-be-2017-agent",
+        "emulator:debug": "functions inspect agent",
+        "emulator:logs": "functions logs read",
         "ngrok": "ngrok http 8010 --subdomain=wassimchegham"
     },
     "keywords": [
