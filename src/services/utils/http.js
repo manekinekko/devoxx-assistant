@@ -5,5 +5,8 @@ module.exports = (url = '') => {
     console.log('fetching ', `${API_ENDPOINT}${url}`);
     return fetch(`${API_ENDPOINT}${url}`)
         .then(rawResponse => rawResponse.text())
-        .then(textResponse => JSON.parse(textResponse));
+        .then(textResponse => JSON.parse(textResponse))
+        .catch(e => {
+          throw new Error(`An error has occured when fetching ${url}.`);
+        });
 }
