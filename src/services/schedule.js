@@ -1,6 +1,6 @@
 const devoxxApi = require("./utils/http");
 
-module.exports = () => {
+module.exports.getSchedule = () => {
   return devoxxApi(/* root api */).then(data => {
 
     // SchduleObject = {
@@ -12,10 +12,14 @@ module.exports = () => {
     // }
 
     // get the schedule of each day
-    const conferenceDyas = data.days.map(day => devoxxApi(`/schedules/${day.toLowerCase()}`));
+    const conferenceDyas = data.days.map(day =>
+      devoxxApi(`/schedules/${day.toLowerCase()}`)
+    );
 
     return Promise.all(conferenceDyas)
       .then(data => data.map(d => d.slots))
-      .then(slots => [].concat(...slots));
+      .then(slots => [].concat(...slots))
   });
 };
+
+module.exports.byTrackId = (trackId) => slot => slot.talk && slot.talk.trackId === trackId;

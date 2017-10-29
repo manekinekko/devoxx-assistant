@@ -2,7 +2,7 @@ const topics = require("src/services/topics");
 const { take } = require('src/services/utils/array');
 
 module.exports = app => {
-  topics()
+  return topics()
     .then(topics => {
       if (topics.length === 0) {
         
@@ -12,7 +12,7 @@ module.exports = app => {
 
       } else {
         
-        if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
+        if (app.hasScreen()) {
           // show a carousel with the tracks icons
 
           let list = app.buildList(`Here are the available topics:`);
