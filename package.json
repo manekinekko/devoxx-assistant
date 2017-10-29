@@ -6,9 +6,10 @@
     "scripts": {
         "emulator:start": "functions start",
         "emulator:deploy": "functions deploy agent --entry-point=agent --trigger-http -p=devoxx-be-2017-agent",
-        "emulator:debug": "functions inspect agent",
+        "emulator:inspect": "functions inspect agent",
         "emulator:logs": "functions logs read",
-        "ngrok": "ngrok http 8010 --subdomain=wassimchegham"
+        "ngrok": "ngrok http 8010 --subdomain=wassimchegham",
+        "test": "jest"
     },
     "keywords": [
         "chatbot",
@@ -32,6 +33,7 @@
         "node-fetch": "^1.7.2"
     },
     "devDependencies": {
+        "jest": "^21.2.1",
         "optimist": "^0.6.1"
     }
 }
