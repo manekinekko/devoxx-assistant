@@ -1,18 +1,19 @@
 
-function take(titles, number) {
-  return range( shuffle(titles), 0, number);
+function take(array, number) {
+  number = Math.min(array.length, number);
+  return range( shuffle(array), 0, number);
 }
 
-function range(titles, start, end) {
-  return titles.slice(start, end);
+function range(array, start, end) {
+  return array.slice(start, end);
 }
 
-function shuffle(a) {
-  for (let i = a.length - 1; i > 0; i--) {
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+    [array[i], array[j]] = [array[j], array[i]];
   }
-  return a;
+  return array;
 }
 
 module.exports = {
