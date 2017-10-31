@@ -1,12 +1,35 @@
-const DialogflowApp = require("actions-on-google").DialogflowApp;
+const sdk = require("actions-on-google");
+const DialogflowApp = sdk.DialogflowApp;
+const ActionsSdkApp = sdk.ActionsSdkApp;
 const path = require("path");
 const fs = require("fs");
 
-module.exports.Actionary = class Actionary {
+const assert = (predicate, expecting, actual) => {
+  if (predicate === false) {
+    throw new Error(
+      `[Actionary] Assertion failed: Expecting "${expecting}". Got "${actual}"`
+    );
+    return false;
+  }
+};
+
+class Actionary {
   constructor({ request, response }) {
-    this.assistant = new DialogflowApp({ request, response });
-    this.patch(this.assistant);
+    this.assistant = null;
+    this.reqRes = { request, response };
     this.actionMap = new Map();
+  }
+
+  instance(type) {
+    assert(
+      (typeof type === 'function' && /(DialogflowApp|ActionsSdkApp)/.test(type.name)),
+      "ActionsSdkApp|DialogflowApp",
+      typeof type
+    );
+
+    this.assistant = new type(this.reqRes);
+    this.patch(this.assistant);
+    return this;
   }
 
   patch(instance) {
@@ -16,36 +39,41 @@ module.exports.Actionary = class Actionary {
   }
 
   setActions(actions) {
-    if (Array.isArray(actions)) {
-      actions.map(action => {
-        const file = action.replace(/\./g, path.sep) + ".js";
-        this.setAction(action, file);
-      });
-    } else {
-      throw Error(
-        `Ationary.setActions: expect argument type of "Array", got "${typeof actions}".`
-      );
-    }
+    assert(Array.isArray(actions), "Array", typeof actions);
+
+    actions.map(action => {
+      const file = action.replace(/\./g, path.sep) + ".js";
+      this.setAction(action, file);
+    });
     return this;
   }
 
   setAction(actionName, file) {
     const filePath = path.join(process.cwd(), "src", `${file}`);
-    if (fs.existsSync(filePath)) {
-      this.actionMap.set(actionName, require(filePath));
-    } else {
-      throw new Error(`Actionary.setAction: file ${filePath} NOT FOUND`);
-    }
+    assert(fs.existsSync(filePath), "File", "NOT_FOUND");
+
+    this.actionMap.set(actionName, require(filePath));
     return this;
   }
 
   start() {
+    assert(
+      (typeof this.assistant === 'object'),
+      "ActionsSdkApp|DialogflowApp",
+      typeof this.assistant
+    );
+
     this.assistant.handleRequest(this.actionMap);
     return this;
   }
 };
 
-module.exports.ActionaryTest = {
+Actionary.sdk = {
+  DialogflowApp,
+  ActionsSdkApp
+};
+
+const ActionaryTest = {
   SurfaceCapabilities: {
     SCREEN_OUTPUT: 1
   },
@@ -72,4 +100,9 @@ module.exports.ActionaryTest = {
       value: "TRACK_xxx"
     };
   }
+};
+
+module.exports = {
+  Actionary,
+  ActionaryTest
 };
