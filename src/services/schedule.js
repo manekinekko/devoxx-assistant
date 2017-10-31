@@ -21,5 +21,3 @@ module.exports.getSchedule = () => {
       .then(slots => [].concat(...slots))
   });
 };
-
-module.exports.byTrackId = (trackId) => slot => slot.talk && slot.talk.trackId === trackId;
