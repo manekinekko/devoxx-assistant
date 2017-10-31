@@ -15,6 +15,7 @@ const ACTIONS = [
   'com.devoxx.topic.select',
   'com.devoxx.talk.current',
   'com.devoxx.talk.find_by_id',
+  'com.devoxx.talk.find_by_tag',
   'com.devoxx.talk.find_by_topic',
   'com.devoxx.talk.find_by_topic.next',
   'com.devoxx.talk.find_by_topic.more'
@@ -24,6 +25,7 @@ exports.agent = function(request, response) {
     console.log("starting the agent...");
 
     new Actionary({request, response})
+      .instance(Actionary.sdk.DialogflowApp)
       .setActions(ACTIONS)
       .start();
 };
