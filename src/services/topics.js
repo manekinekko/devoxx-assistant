@@ -1,9 +1,7 @@
-const devoxxApi = require("./utils/http");
-let __CACHE = [];
+const { devoxxApi } = require("./utils/http");
 
 module.exports = () => {
   return devoxxApi(`/tracks`).then(data => {
-    
     // TrackObject = {
     //     id: '',
     //     imgsrc: '',
