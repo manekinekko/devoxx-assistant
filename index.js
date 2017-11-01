@@ -20,6 +20,7 @@ const ACTIONS = [
   "com.devoxx.talk.find_by_topic.next",
   "com.devoxx.talk.find_by_topic.more",
   "com.devoxx.speaker.bio",
+  "com.devoxx.speaker.by_tag",
   "com.devoxx.speaker.by_room"
 ];
 

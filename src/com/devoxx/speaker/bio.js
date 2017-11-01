@@ -18,7 +18,7 @@ module.exports = app => {
         app.ask(
           app
             .buildRichResponse()
-            .addSimpleResponse(speaker.bio)
+            .addSimpleResponse(`Here is the bio of ${speaker.firstName} ${speaker.lastName}`)
             .addBasicCard(
               app
                 .buildBasicCard(speaker.bio)

@@ -1,4 +1,4 @@
-const { getSpeakersAsArray } = require("./speaker");
+const { getSpeakersAsArray, getSpeakersByTag } = require("./speaker");
 const { writeJSON } = require("./utils/node");
 
 describe.only("testing schedule", () => {
@@ -23,4 +23,11 @@ describe.only("testing schedule", () => {
       expect(speaker.twitter).toBeTruthy();
     });
   });
+
+  it("should get speakers by tag 'angular' ", () => {
+    return getSpeakersByTag("angular").then(speakers => {
+      expect(speakers).toBeTruthy();
+      expect(speakers.pop().uuid).toBeTruthy();
+    })
+  })
 });
