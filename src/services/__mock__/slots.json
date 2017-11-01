@@ -164,7 +164,7 @@
    ],
    "track": "Big Data &amp; Machine Learning",
    "audienceLevel": "l2",
-   "summaryAsHtml": "<p>The hottest topic in computer science today is machine learning and deep neural networks. Many problems deemed &quot;impossible&quot; only 5 years ago have now been solved by deep learning: playing GO, recognising what is in an image, translating languages, ...</p>\n<p>Many software developers are eager to adopt these new technologies as soon as they come out of research labs and the goal of this session is to equip you to do so. Last year at Devoxx, I explained the basic principles behind neural networks. This year, we will focus on neural network architectures, dive into the most recent advances in the field and give you tips, best practices and pointers to apply these techniques in your projects. No PhD required.</p>\n<p>This university session will cover the newest deep learning developments in image recognition, natural language processing and reinforcement learning. Watching last year&#x27;s recording beforehand (https://youtu.be/vq2nnJ4g6N0) is a good idea but all the necessary concepts will be reexplained.</p>\n",
+   "summaryAsHtml": "<p>The hottest topic in computer science today is machine learning and deep neural networks. Many problems deemed &quot;impossible&quot; only 5 years ago have now been solved by deep learning: playing GO, recognizing what is in an image, translating languages, ...</p>\n<p>Software engineers are eager to adopt these new technologies as soon as they come out of research labs and the goal of this session is to equip you to do so. Last year at Devoxx, we covered the basic principles behind neural networks. This year, we will focus on neural network architectures, dive into the most recent advances in the field and give you tips, engineering best practices and pointers to apply these techniques in your projects. No PhD required.</p>\n<p>This university session will cover the newest deep learning developments in image recognition, natural language processing and reinforcement learning. Watching last year&#x27;s recording beforehand (https://youtu.be/vq2nnJ4g6N0) is a good idea but all the necessary concepts will be reexplained.</p>\n",
    "id": "ZZD-8893",
    "speakers": [
     {
@@ -174,11 +174,19 @@
       "title": "Martin Görner"
      },
      "name": "Martin Görner"
+    },
+    {
+     "link": {
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/7c126901b393c4bfa1cd2c27b1a75689a40a0e8a",
+      "rel": "http://cfp.devoxx.be/api/profile/speaker",
+      "title": "Nithum Thain"
+     },
+     "name": "Nithum Thain"
     }
    ],
-   "title": "Advances in machine learning, explained for software engineers",
+   "title": "Tensorflow and modern deep learning architectures, without a PhD",
    "lang": "en",
-   "summary": "The hottest topic in computer science today is machine learning and deep neural networks. Many problems deemed \"impossible\" only 5 years ago have now been solved by deep learning: playing GO, recognising what is in an image, translating languages, ...\r\n\r\nMany software developers are eager to adopt these new technologies as soon as they come out of research labs and the goal of this session is to equip you to do so. Last year at Devoxx, I explained the basic principles behind neural networks. This year, we will focus on neural network architectures, dive into the most recent advances in the field and give you tips, best practices and pointers to apply these techniques in your projects. No PhD required.\r\n\r\nThis university session will cover the newest deep learning developments in image recognition, natural language processing and reinforcement learning. Watching last year's recording beforehand (https://youtu.be/vq2nnJ4g6N0) is a good idea but all the necessary concepts will be reexplained."
+   "summary": "The hottest topic in computer science today is machine learning and deep neural networks. Many problems deemed \"impossible\" only 5 years ago have now been solved by deep learning: playing GO, recognizing what is in an image, translating languages, ...\r\n\r\nSoftware engineers are eager to adopt these new technologies as soon as they come out of research labs and the goal of this session is to equip you to do so. Last year at Devoxx, we covered the basic principles behind neural networks. This year, we will focus on neural network architectures, dive into the most recent advances in the field and give you tips, engineering best practices and pointers to apply these techniques in your projects. No PhD required.\r\n\r\nThis university session will cover the newest deep learning developments in image recognition, natural language processing and reinforcement learning. Watching last year's recording beforehand (https://youtu.be/vq2nnJ4g6N0) is a good idea but all the necessary concepts will be reexplained."
   },
   "fromTime": "09:30",
   "toTimeMillis": 1509967800000,
