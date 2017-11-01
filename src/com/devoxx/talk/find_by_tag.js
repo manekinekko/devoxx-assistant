@@ -1,12 +1,11 @@
-const schedule = require("src/services/schedule");
+const { getListOfSlots } = require("src/services/schedule");
 const Predicates = require("src/services/predicates");
 const { take } = require("src/services/utils/array");
 
 module.exports = app => {
   const tag = app.getArgument("tag");
 
-  schedule
-    .getSchedule()
+  getListOfSlots()
     .then(slots => Predicates.filter(slots, Predicates.byTag, tag))
     .then(slots => {
       if (app.hasScreen()) {

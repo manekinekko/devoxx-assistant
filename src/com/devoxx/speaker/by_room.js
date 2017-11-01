@@ -1,4 +1,4 @@
-const { getSpeakersByRoomName } = require("src/services/schedule");
+const { getSpeakersByRoomName } = require("src/services/speaker");
 const { take } = require("src/services/utils/array");
 
 module.exports = app => {

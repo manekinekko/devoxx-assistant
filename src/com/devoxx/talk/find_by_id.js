@@ -1,12 +1,11 @@
-const schedule = require("src/services/schedule");
+const { getListOfSlots } = require("src/services/schedule");
 const Predicates = require("src/services/predicates");
 const { take } = require("src/services/utils/array");
 
 module.exports = app => {
   let selectedTalkId = app.getSelectedOption();
 
-  schedule
-    .getSchedule()
+  getListOfSlots()
     .then(slots =>
       Predicates.filter(slots, Predicates.byTalkId, selectedTalkId)
     )
@@ -14,12 +13,12 @@ module.exports = app => {
       if (slots.length === 1) {
         const slot = slots.pop();
         let tags = slot.talk.tags.map(tag => tag.value);
-        let speakers = slot.talk.speakers.map(speaker => speaker.name).join(', ');
+        let speakers = slot.talk.speakers
+          .map(speaker => speaker.name)
+          .join(", ");
 
         if (app.hasScreen()) {
-
-          
-          app.setContext('find-by-tag', 1);
+          app.setContext("find-by-tag", 1);
           app.ask(
             app
               .buildRichResponse()
@@ -30,7 +29,8 @@ module.exports = app => {
                   .setTitle(slot.talk.title)
                   .addButton(
                     "Read more",
-                    `https://cfp.devoxx.be/2017/talk/${slot.talk.id}/${slot.talk.title.replace(/\s/g, "_")}`
+                    `https://cfp.devoxx.be/2017/talk/${slot.talk
+                      .id}/${slot.talk.title.replace(/\s/g, "_")}`
                   )
               )
               .addSuggestions(take(tags, 8))

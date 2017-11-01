@@ -1,10 +1,10 @@
 const {
-  getSchedule,
-  getSpeakersByRoomName,
+  getListOfSlots,
   listAllRooms,
   listAllTags,
   getTopicsByTrackId
 } = require("./schedule");
+const { getSpeakersByRoomName } = require("./speaker");
 const { pbcopy, writeJSON } = require("./utils/node");
 const Predicates = require("./predicates");
 const { filter } = require("./predicates");
@@ -12,7 +12,7 @@ const { filter } = require("./predicates");
 describe("testing schedule", () => {
   it("should list all topics", () => {
     expect.assertions(1);
-    return getSchedule().then(slots => {
+    return getListOfSlots().then(slots => {
       writeJSON("src/services/__mock__/slots.json", slots);
       expect(slots.length).toBe(255);
     });
@@ -29,7 +29,7 @@ describe("testing schedule", () => {
 
   it("should match 6 talks with 'performance' tag", () => {
     expect.assertions(1);
-    return getSchedule()
+    return getListOfSlots()
       .then(slots => Predicates.filter(slots, Predicates.byTag, "performance"))
       .then(slots => {
         expect(slots.length).toBe(6);
@@ -38,7 +38,7 @@ describe("testing schedule", () => {
 
   it("should match snapshot", () => {
     expect.assertions(1);
-    return getSchedule().then(slots => expect(slots).toMatchSnapshot());
+    return getListOfSlots().then(slots => expect(slots).toMatchSnapshot());
   });
 
   it("should list all rooms", () => {
@@ -60,11 +60,12 @@ describe("testing schedule", () => {
   });
 
   it("should list speakers in 'Room 6'", () => {
-    expect.assertions(2);
-    return getSpeakersByRoomName("room 6").then(speakers => {
+    expect.assertions(3);
+    return getSpeakersByRoomName("Room 6").then(speakers => {
       // console.log(speakers);
       expect(speakers).toMatchSnapshot();
       expect(speakers[0].uuid).toBeTruthy();
+      expect(speakers[0].firstName).toBeTruthy();
     });
   });
 });

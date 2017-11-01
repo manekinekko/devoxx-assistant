@@ -1,11 +1,11 @@
-const { getSchedule } = require("src/services/schedule");
 const Predicates = require("src/services/predicates");
+const { getListOfSlots } = require("src/services/schedule");
 const { take } = require("src/services/utils/array");
 
 module.exports = app => {
   let selectedTopicId = app.getSelectedOption();
 
-  getSchedule()
+  getListOfSlots()
     .then(slots =>
       Predicates.filter(slots, Predicates.byTrackId, selectedTopicId)
     )
