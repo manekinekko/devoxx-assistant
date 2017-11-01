@@ -14,8 +14,7 @@ module.exports = app => {
           buildList(app, slots, tag);
         } else if (slots.length === 1) {
           buildCard(app, slots, tag);
-        }
-        else {
+        } else {
           app.ask(`No talks labeled as "${tag}". Try with another tag.`);
         }
       } else {
@@ -51,14 +50,14 @@ function buildList(app, slots, tag) {
     console.log("builing list with talk", slot);
   });
 
-  app.setContext("find_by_id", 1);
+  app.setContext("find-by-id", 1);
   app.askWithList(`${title}. Which talk are you interested in?`, list);
 }
 
 function buildCard(app, slots, tag) {
   const slot = slots.pop();
   let tags = slot.talk.tags.map(tag => tag.value);
-  app.setContext("talk_details", 10, slot);
+  app.setContext("talk-details", 10, slot);
   app.ask(
     app
       .buildRichResponse()

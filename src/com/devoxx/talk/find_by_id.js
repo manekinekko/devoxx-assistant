@@ -14,15 +14,16 @@ module.exports = app => {
       if (slots.length === 1) {
         const slot = slots.pop();
         let tags = slot.talk.tags.map(tag => tag.value);
-        app.setContext("talk_details", 10, slot);
+        let speakers = slot.talk.speakers.map(speaker => speaker.name).join(', ');
 
         if (app.hasScreen()) {
+
           
-          app.setContext('find_by_tag', 1);
+          app.setContext('find-by-tag', 1);
           app.ask(
             app
               .buildRichResponse()
-              .addSimpleResponse(slot.talk.title)
+              .addSimpleResponse(`${slot.talk.title} by ${speakers}`)
               .addBasicCard(
                 app
                   .buildBasicCard(slot.talk.summary)

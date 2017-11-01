@@ -1,17 +1,18 @@
-const schedule = require("src/services/schedule");
+const { getSchedule } = require("src/services/schedule");
 const Predicates = require("src/services/predicates");
 const { take } = require("src/services/utils/array");
 
 module.exports = app => {
   let selectedTopicId = app.getSelectedOption();
-  
-  schedule.getSchedule()
-    .then(slots => Predicates.filter(slots, Predicates.byTrackId, selectedTopicId))
+
+  getSchedule()
+    .then(slots =>
+      Predicates.filter(slots, Predicates.byTrackId, selectedTopicId)
+    )
     .then(slots => {
       // we assume that a slot is a talk.
 
       if (app.hasScreen()) {
-        
         let list = app.buildList();
         let title = `I found ${slots.length} available talks:`;
         const maxItems = Math.min(slots.length, 30);
@@ -19,7 +20,7 @@ module.exports = app => {
           title = `I found ${slots.length} available talks. Here are ${maxItems} of them:`;
         }
         list.setTitle(title);
-        
+
         slots = take(slots, maxItems);
 
         slots.forEach(slot => {
@@ -32,9 +33,8 @@ module.exports = app => {
           console.log("builing list with talk", slot);
         });
 
-        app.setContext('find_by_id', 1);        
+        app.setContext("find-by-id", 1);
         app.askWithList(`${title}. Which talk are you interested in?`, list);
-
       } else {
         const randomSlots = take(slots, 3);
         const slotsTitles = randomSlots.map(slot => slot.title).join(", ");

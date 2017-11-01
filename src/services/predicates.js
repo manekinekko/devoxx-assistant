@@ -1,3 +1,5 @@
+module.exports.filter = (collection) => (predicat, comparator) => predicat(collection, comparator);
+
 module.exports = class Predicates {
   static filter(collection, predicat, comparator) {
     return predicat(collection, comparator);
@@ -91,6 +93,12 @@ module.exports = class Predicates {
     return collection
       .filter(slot => slot.talk)
       .filter(slot => slot.talk.tags.some(ctag => ctag.value.toLowerCase().includes(tag.toLowerCase())));
+  }
+
+  static byRoomName(collection, roomName) {
+    return collection
+      .filter(slot => slot.talk)
+      .filter(slot => slot.roomName.toLowerCase().includes(roomName.toLowerCase()));
   }
 
   static byTopic(collection, topic) {
