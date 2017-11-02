@@ -4,6 +4,14 @@ const ActionsSdkApp = sdk.ActionsSdkApp;
 const path = require("path");
 const fs = require("fs");
 
+const moment = require("moment");
+
+const Debug = require("debug");
+process.env.DEBUG = "actions-on-google:*";
+process.env.DEBUG_COLORS = true;
+process.env.DEBUG_DEPTH = "4";
+process.env.DEBUG_SHOW_HIDDEN = true;
+
 const assert = (predicate, expecting, actual) => {
   if (predicate === false) {
     throw new Error(
@@ -14,15 +22,16 @@ const assert = (predicate, expecting, actual) => {
 };
 
 class Actionary {
-  constructor({ request, response }) {
+  constructor({ request, response, sessionStarted }) {
+    this.reqRes = { request, response, sessionStarted };
     this.assistant = null;
-    this.reqRes = { request, response };
     this.actionMap = new Map();
   }
 
-  instance(type) {
+  use(type) {
     assert(
-      (typeof type === 'function' && /(DialogflowApp|ActionsSdkApp)/.test(type.name)),
+      typeof type === "function" &&
+        /(DialogflowApp|ActionsSdkApp)/.test(type.name),
       "ActionsSdkApp|DialogflowApp",
       typeof type
     );
@@ -33,9 +42,21 @@ class Actionary {
   }
 
   patch(instance) {
-    instance.hasScreen = function hasScreen() {
-      return this.hasSurfaceCapability(this.SurfaceCapabilities.SCREEN_OUTPUT);
+    instance.hasScreen = () => {
+      return instance.hasSurfaceCapability(
+        instance.SurfaceCapabilities.SCREEN_OUTPUT
+      );
     };
+
+    instance.getDateTimeFromRequest = () => {
+      // @todo for testing purposes only.
+      // 2017-11-09T13:36:40+01:00
+      return moment(1510231000000);
+      // return +moment(instance.body_.timestamp).utcOffset("+02:00");
+    };
+
+    instance.debug = Debug("actions-on-google:actionary:debug");
+    instance.error = Debug("actions-on-google:actionary:error");
   }
 
   setActions(actions) {
@@ -58,7 +79,7 @@ class Actionary {
 
   start() {
     assert(
-      (typeof this.assistant === 'object'),
+      typeof this.assistant === "object",
       "ActionsSdkApp|DialogflowApp",
       typeof this.assistant
     );
@@ -66,7 +87,7 @@ class Actionary {
     this.assistant.handleRequest(this.actionMap);
     return this;
   }
-};
+}
 
 Actionary.sdk = {
   DialogflowApp,
