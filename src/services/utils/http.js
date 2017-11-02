@@ -6,7 +6,7 @@ function devoxxApi(url = "") {
     .then(rawResponse => rawResponse.text())
     .then(textResponse => JSON.parse(textResponse))
     .catch(e => {
-      throw new Error(`An error has occured when fetching ${url}.`);
+      throw new Error(`An error has occured when fetching ${url}. ${e}`);
     });
 }
 

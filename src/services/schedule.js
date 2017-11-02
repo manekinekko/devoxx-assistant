@@ -1,6 +1,6 @@
 const Predicates = require("./predicates");
 const { devoxxApi } = require("./utils/http");
-const { getSpeakersAsObjet } = require("./speaker");
+const { getSpeakersAsObject } = require("./speaker");
 
 function getListOfSlots() {
   return devoxxApi(/* root api */).then(data => {

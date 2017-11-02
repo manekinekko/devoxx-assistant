@@ -56,7 +56,6 @@ function buildList(app, slots, tag) {
 function buildCard(app, slots, tag) {
   const slot = slots.pop();
   let tags = slot.talk.tags.map(tag => tag.value);
-  app.setContext("talk-details", 10, slot);
   app.ask(
     app
       .buildRichResponse()

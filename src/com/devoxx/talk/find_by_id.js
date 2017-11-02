@@ -1,6 +1,5 @@
 const { getListOfSlots } = require("src/services/schedule");
 const Predicates = require("src/services/predicates");
-const { take } = require("src/services/utils/array");
 
 module.exports = app => {
   let selectedTalkId = app.getSelectedOption();
@@ -17,8 +16,9 @@ module.exports = app => {
           .map(speaker => speaker.name)
           .join(", ");
 
+        app.setContext("speaker-talks", 1);
+
         if (app.hasScreen()) {
-          app.setContext("find-by-tag", 1);
           app.ask(
             app
               .buildRichResponse()
@@ -33,12 +33,12 @@ module.exports = app => {
                       .id}/${slot.talk.title.replace(/\s/g, "_")}`
                   )
               )
-              .addSuggestions(take(tags, 8))
+              .addSuggestions(speakers.split(","))
           );
         } else {
           app.ask(
-            `Here is the summary of "${slot.talk.title}": ${slot.talk
-              .summary}. Do you want to know more?`
+            `Here is the summary of "${slot.talk.title}" by ${speakers}: ${slot
+              .talk.summary}. Do you want to know more?`
           );
         }
       } else {

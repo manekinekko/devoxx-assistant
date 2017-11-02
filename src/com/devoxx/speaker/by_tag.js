@@ -11,9 +11,7 @@ module.exports = app => {
       if (app.hasScreen()) {
         // show a carousel with the tracks icons
 
-        let list = app.buildList(
-          `Here are the people speaking about ${tag}:`
-        );
+        let list = app.buildList(`Here are the people speaking about ${tag}:`);
 
         speakers.forEach(speaker => {
           const name = `${speaker.firstName} ${speaker.lastName}`;
@@ -27,7 +25,7 @@ module.exports = app => {
           console.log("builing list with speaker", speaker);
         });
 
-        app.setContext("speaker-bio");
+        app.setContext("speaker-bio", 1);
         app.askWithList(
           `Here are the people speaking about ${tag}. Which speaker are you interested in?`,
           list
