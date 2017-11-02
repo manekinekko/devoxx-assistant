@@ -1,4 +1,5 @@
-module.exports.filter = (collection) => (predicat, comparator) => predicat(collection, comparator);
+module.exports.filter = (predicat, comparator) => collection =>
+  predicat(collection, comparator);
 
 module.exports = class Predicates {
   static filter(collection, predicat, comparator) {
@@ -92,13 +93,44 @@ module.exports = class Predicates {
   static byTag(collection, tag) {
     return collection
       .filter(slot => slot.talk)
-      .filter(slot => slot.talk.tags.some(ctag => ctag.value.toLowerCase().includes(tag.toLowerCase())));
+      .filter(slot =>
+        slot.talk.tags.some(ctag =>
+          ctag.value.toLowerCase().includes(tag.toLowerCase())
+        )
+      );
+  }
+
+  static filterByTag(tag) {
+    return slots =>
+      Predicates.filter(slots, Predicates.byTag, tag.toLocaleLowerCase());
   }
 
   static byRoomName(collection, roomName) {
     return collection
       .filter(slot => slot.talk)
-      .filter(slot => slot.roomName.toLowerCase().includes(roomName.toLowerCase()));
+      .filter(slot =>
+        slot.roomName.toLowerCase().includes(roomName.toLowerCase())
+      );
+  }
+
+  static filterByRoom(roomName) {
+    return slots =>
+      Predicates.filter(
+        slots,
+        Predicates.byRoomName,
+        roomName.toLocaleLowerCase()
+      );
+  }
+
+  static byDay(collection, day) {
+    return collection
+      .filter(slot => slot.talk)
+      .filter(slot => slot.day.toLowerCase().includes(day.toLowerCase()));
+  }
+
+  static filterByDay(day) {
+    return slots =>
+      Predicates.filter(slots, Predicates.byDay, day.toLocaleLowerCase());
   }
 
   static byTopic(collection, topic) {
