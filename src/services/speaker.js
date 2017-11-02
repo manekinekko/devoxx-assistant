@@ -18,7 +18,7 @@ function getSpeakersAsArray() {
 }
 
 function getSpeakersBy(predicates) {
-  // @fixme: getListOfSlots is not a function
+  // FIXME: getListOfSlots is not a function
 
   // return require("./schedule")
   // .getListOfSlots()

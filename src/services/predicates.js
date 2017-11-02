@@ -97,11 +97,17 @@ module.exports = class Predicates {
   }
 
   static filterByTag(tag) {
+    if (!tag) {
+      return slots;
+    }
     return slots =>
       Predicates.filter(slots, Predicates.byTag, tag.toLocaleLowerCase());
   }
 
   static byRoomName(slots, roomName) {
+    if (!roomName) {
+      return slots;
+    }
     return slots
       .filter(slot => slot.talk)
       .filter(slot =>
@@ -110,12 +116,7 @@ module.exports = class Predicates {
   }
 
   static filterByRoom(roomName) {
-    return slots =>
-      Predicates.filter(
-        slots,
-        Predicates.byRoomName,
-        roomName.toLocaleLowerCase()
-      );
+    return slots => Predicates.filter(slots, Predicates.byRoomName, roomName);
   }
 
   static byDay(slots, day) {
@@ -140,36 +141,63 @@ module.exports = class Predicates {
       .map(slot => slot.talk);
   }
 
-  static byTime(slots, currentTime) {
-    if (!currentTime || currentTime < 0) {
+  static byTime(slots, [currentTime, date = null]) {
+    if (!currentTime || currentTime < 0) {
       return slots;
     }
-    
+
     const moment = require("moment");
-    if (currentTime.hours() === 0) {
+    currentTime = moment(currentTime);
+
+    if (
+      currentTime.hours() === 0 &&
+      currentTime.minute() === 0 &&
+      currentTime.second() === 0
+    ) {
       // the user hadn't provide a time (just a day, so skip)
       return slots;
     }
 
+    if (date) {
+      date = moment(date);
+    }
+
     return slots.filter(slot => {
+      // if the user had provided a day ("2017-11-08"), use it
+      // otherwise, use the current day from slot.
+      // in both case, use the same "currentTime" that the user had provided
+      if (date) {
+        date = moment(slot.fromTimeMillis);
+      }
+      
+      // currentTime = moment({
+      //   day: date.day()-1,
+      //   month: date.month()+1,
+      //   year: date.year(),
+      //   hours: currentTime.hours(),
+      //   minute: currentTime.minute(),
+      //   second: currentTime.second()
+      // });
+      currentTime = moment(`${date.format("YYYY-MM-DD")}T${currentTime.format("HH:mm:SS[.]SSSS")}`);
+
       const fromTime = moment(slot.fromTimeMillis);
       const toTime = moment(slot.toTimeMillis);
       const talkLength = toTime.diff(fromTime, "minute");
-      const diffTo = toTime.diff(currentTime, "minute");
-      const diffFrom = fromTime.diff(currentTime, "minute");
-      console.log(currentTime, talkLength, fromTime, toTime, diffFrom, diffTo);
 
-      if (diffFrom < 0 && diffTo > 0) {
-        // there is a talk currently playing
-        return true;
-      } else {
-        // upcoming talks
-        return false;
-      }
+      const inclusive = "[]";
+      const isInBewtee = moment(currentTime).isBetween(
+        fromTime,
+        toTime,
+        "minute",
+        inclusive
+      );
+
+      console.log(currentTime, talkLength, fromTime, toTime, isInBewtee);
+      return isInBewtee;
     });
   }
 
-  static filterByTime(time = -1) {
-    return slots => Predicates.filter(slots, Predicates.byTime, time);
+  static filterByTime([time = null, date = null]) {
+    return slots => Predicates.filter(slots, Predicates.byTime, [time, date]);
   }
 };

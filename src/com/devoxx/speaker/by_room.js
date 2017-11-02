@@ -7,14 +7,26 @@ const moment = require("moment");
 module.exports = app => {
   const roomName = app.getArgument("room");
   let date = app.getArgument("date");
+  let time = app.getArgument("time");
   let when = app.getArgument("when");
   let currentTime = "";
   let day = "";
   if (date) {
     // fix DialogFlow timezone, otherwise moment() will add +1 hour
     date = date.replace(/Z$/, "");
-    currentTime = moment(date);
-    day = currentTime.format("dddd").toLocaleLowerCase();
+    day = moment(date)
+      .format("dddd")
+      .toLocaleLowerCase();
+  }
+
+  if (time) {
+    const t = time.split(":");
+    // warning: this will set the day to "today"
+    currentTime = moment({
+      hour: t[0],
+      minute: t[1],
+      second: t[2]
+    });
   }
 
   if (when && when.includes("now")) {
@@ -25,7 +37,7 @@ module.exports = app => {
   getListOfSlots()
     .then(Predicates.filterByRoom(roomName))
     .then(Predicates.filterByDay(day))
-    .then(Predicates.filterByTime(currentTime))
+    .then(Predicates.filterByTime([currentTime, date]))
     .then(slots => {
       if (slots.length === 0) {
         // no current talk
@@ -47,7 +59,7 @@ function foundNoSpeaker(app, roomName, currentTime) {
 
     if (isNoTimeGiven) {
       app.ask(
-        `It seems there is no person speaking in ${roomName} on ${currentTime.format(
+        `Humm! There is no talk in ${roomName} on ${currentTime.format(
           "dddd"
         )}. You might wanna try with different days and room names.`
       );
@@ -62,7 +74,7 @@ function foundNoSpeaker(app, roomName, currentTime) {
     }
   } else {
     app.ask(
-      `It seems there is no person speaking in ${roomName}. You might wanna try with different room names.`
+      `There is no talk in ${roomName}. You might wanna try with different room names.`
     );
   }
 }
@@ -74,11 +86,14 @@ function foundOneSpeaker(app, slot, day, time) {
       .talk.title}. Wanna more details?`
   );
 }
-function foundManySpeakers(app, slots, roomName, day, time) {
+function foundManySpeakers(app, slots, roomName, day, currentTime) {
+  app.debug("xxxx", day, currentTime);
+
   getSpeakersFromSlots(slots).then(speakers => {
     if (app.hasScreen()) {
-      let title = `Here are the people speaking in ${roomName}`;
-      title = day ? `${title} on ${day}.` : `${title}.`;
+      let title = `I found ${speakers.length} speakers presenting in ${roomName}`;
+      title = day ? `${title} on ${day}` : `${title}`;
+      title = currentTime ? `${title} at ${currentTime}.` : `${title}.`;
       let list = app.buildList(title);
 
       speakers.forEach(speaker => {
@@ -91,7 +106,7 @@ function foundManySpeakers(app, slots, roomName, day, time) {
               .setDescription(speaker.bio)
               .setImage(speaker.avatarURL, name)
           );
-          console.log("builing list with speaker", speaker);
+          console.log("builing list with speaker UUID", speaker.uuid);
         }
       });
 
