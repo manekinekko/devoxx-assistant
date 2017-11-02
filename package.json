@@ -29,6 +29,7 @@
     "dependencies": {
         "@google-cloud/functions-emulator": "^1.0.0-alpha.25",
         "actions-on-google": "^1.5.1",
+        "moment": "^2.19.1",
         "ngrok": "^2.2.21",
         "node-fetch": "^1.7.2"
     },
