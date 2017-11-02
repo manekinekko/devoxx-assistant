@@ -1,33 +1,32 @@
-module.exports.filter = (collection) => (predicat, comparator) => predicat(collection, comparator);
+module.exports.filter = (predicat, comparator) => slots =>
+  predicat(slots, comparator);
 
 module.exports = class Predicates {
-  static filter(collection, predicat, comparator) {
-    return predicat(collection, comparator);
+  static filter(slots, predicat, comparator) {
+    return predicat(slots, comparator);
   }
 
-  static byTrackId(collection, id) {
-    return collection.filter(slot => slot.talk && slot.talk.trackId === id);
+  static byTrackId(slots, id) {
+    return slots.filter(slot => slot.talk && slot.talk.trackId === id);
   }
 
-  static byTalkId(collection, id) {
-    return collection.filter(slot => slot.talk && slot.talk.id === id);
+  static byTalkId(slots, id) {
+    return slots.filter(slot => slot.talk && slot.talk.id === id);
   }
 
-  static byTalkName(collection) {
-    return collection
-      .filter(slot => slot.talk)
-      .map(slot => slot.talk.title.trim());
+  static byTalkName(slots) {
+    return slots.filter(slot => slot.talk).map(slot => slot.talk.title.trim());
   }
 
-  static byTalkTrack(collection) {
-    collection = collection
+  static byTalkTrack(slots) {
+    slots = slots
       .filter(slot => slot.talk)
       .map(slot => slot.talk.track.trim().replace("&amp;", "and"));
-    return [...new Set(collection)];
+    return [...new Set(slots)];
   }
 
-  static byTalkTrackPopular(collection, maxElements) {
-    collection = collection
+  static byTalkTrackPopular(slots, maxElements) {
+    slots = slots
       .filter(slot => slot.talk)
       .map(slot => slot.talk.track.trim().replace("&amp;", "and"))
       .reduce((acc, topic) => {
@@ -43,7 +42,7 @@ module.exports = class Predicates {
          * }
          */
     let acc = [];
-    for (let pair of collection) {
+    for (let pair of slots) {
       acc.push(pair);
     }
     /**
@@ -67,51 +66,110 @@ module.exports = class Predicates {
     return acc.slice(0, maxElements);
   }
 
-  static byTalkType(collection) {
-    collection = collection
+  static byTalkType(slots) {
+    slots = slots
       .filter(slot => slot.talk)
       .map(slot => slot.talk.talkType.trim());
-    return [...new Set(collection)];
+    return [...new Set(slots)];
   }
 
-  static byRoom(collection) {
-    collection = collection
-      .filter(slot => slot.talk)
-      .map(slot => slot.roomName.trim());
-    return [...new Set(collection)];
+  static byRoom(slots) {
+    slots = slots.filter(slot => slot.talk).map(slot => slot.roomName.trim());
+    return [...new Set(slots)];
   }
 
-  static bySpeaker(collection) {
-    const speakers = collection
+  static bySpeaker(slots) {
+    const speakers = slots
       .filter(slot => slot.talk)
       .map(slot => slot.talk.speakers.map(speaker => speaker.name.trim()).pop())
       .sort();
     return new Set(speakers);
   }
 
-  static byTag(collection, tag) {
-    return collection
+  static byTag(slots, tag) {
+    return slots
       .filter(slot => slot.talk)
-      .filter(slot => slot.talk.tags.some(ctag => ctag.value.toLowerCase().includes(tag.toLowerCase())));
-  }
-
-  static byRoomName(collection, roomName) {
-    return collection
-      .filter(slot => slot.talk)
-      .filter(slot => slot.roomName.toLowerCase().includes(roomName.toLowerCase()));
-  }
-
-  static byTopic(collection, topic) {
-    const talks = collection.filter(slot => {
-      return (
-        slot.talk &&
-        slot.talk.track.toLowerCase().indexOf(topic.toLowerCase()) !== -1
+      .filter(slot =>
+        slot.talk.tags.some(ctag =>
+          ctag.value.toLowerCase().includes(tag.toLowerCase())
+        )
       );
-    });
-    if (talks.length > 0) {
-      return talks.map(slot => slot.talk);
-    } else {
-      return [];
+  }
+
+  static filterByTag(tag) {
+    return slots =>
+      Predicates.filter(slots, Predicates.byTag, tag.toLocaleLowerCase());
+  }
+
+  static byRoomName(slots, roomName) {
+    return slots
+      .filter(slot => slot.talk)
+      .filter(slot =>
+        slot.roomName.toLowerCase().includes(roomName.toLowerCase())
+      );
+  }
+
+  static filterByRoom(roomName) {
+    return slots =>
+      Predicates.filter(
+        slots,
+        Predicates.byRoomName,
+        roomName.toLocaleLowerCase()
+      );
+  }
+
+  static byDay(slots, day) {
+    return slots
+      .filter(slot => slot.talk)
+      .filter(slot => slot.day.toLowerCase().includes(day.toLowerCase()));
+  }
+
+  static filterByDay(day) {
+    return slots =>
+      Predicates.filter(slots, Predicates.byDay, day.toLocaleLowerCase());
+  }
+
+  static byTopic(slots, topic) {
+    return slots
+      .filter(slot => {
+        return (
+          slot.talk &&
+          slot.talk.track.toLowerCase().includes(topic.toLowerCase())
+        );
+      })
+      .map(slot => slot.talk);
+  }
+
+  static byTime(slots, currentTime) {
+    if (!currentTime || currentTime < 0) {
+      return slots;
     }
+    
+    const moment = require("moment");
+    if (currentTime.hours() === 0) {
+      // the user hadn't provide a time (just a day, so skip)
+      return slots;
+    }
+
+    return slots.filter(slot => {
+      const fromTime = moment(slot.fromTimeMillis);
+      const toTime = moment(slot.toTimeMillis);
+      const talkLength = toTime.diff(fromTime, "minute");
+      const diffTo = toTime.diff(currentTime, "minute");
+      const diffFrom = fromTime.diff(currentTime, "minute");
+      console.log(currentTime, talkLength, fromTime, toTime, diffFrom, diffTo);
+
+      if (diffFrom < 0 && diffTo > 0) {
+        // there is a talk currently playing
+        return true;
+      } else {
+        // upcoming talks
+        return false;
+      }
+    });
+  }
+
+  static filterByTime(time = -1) {
+    return slots => Predicates.filter(slots, Predicates.byTime, time);
   }
 };

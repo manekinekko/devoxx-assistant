@@ -1,7 +1,10 @@
 const { getSpeakersAsArray } = require("src/services/speaker");
 
 module.exports = app => {
-  const speakerName = app.getSelectedOption();
+  let speakerName = app.getSelectedOption();
+  if (!speakerName) {
+    speakerName = app.data.speakerName;
+  }
 
   getSpeakersAsArray().then(speakers => {
     const speaker = speakers
@@ -14,11 +17,16 @@ module.exports = app => {
       .pop();
 
     if (speaker) {
+      
+      app.data.selectedSpeakerUuid = speaker.uuid;
+
       if (app.hasScreen()) {
         app.ask(
           app
             .buildRichResponse()
-            .addSimpleResponse(`Here is the bio of ${speaker.firstName} ${speaker.lastName}`)
+            .addSimpleResponse(
+              `Here is the bio of ${speaker.firstName} ${speaker.lastName}`
+            )
             .addBasicCard(
               app
                 .buildBasicCard(speaker.bio)
@@ -37,7 +45,7 @@ module.exports = app => {
             .addSuggestions(["talks"])
         );
       } else {
-        app.ask(`${speaker.bio}. Anything else you wanna know?`);
+        app.ask(`${speaker.bio}. Anything you wanna know about this speaker?`);
       }
     } else {
       app.ask(`Sorry, I could not find any information about ${speakerName}.`);

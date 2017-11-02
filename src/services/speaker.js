@@ -2,7 +2,7 @@ const { devoxxApiMock } = require("./utils/http");
 const { getListOfSlots } = require("./schedule");
 const Predicates = require("./predicates");
 
-function getSpeakersAsObjet() {
+function getSpeakersAsObject() {
   return devoxxApiMock("speakers").then(speakers =>
     Promise.resolve(
       speakers.reduce(
@@ -14,42 +14,73 @@ function getSpeakersAsObjet() {
 }
 
 function getSpeakersAsArray() {
-  return getSpeakersAsObjet().then(speakers => Array.from(speakers.values()));
+  return getSpeakersAsObject().then(speakers => Array.from(speakers.values()));
 }
 
-function getSpeakersBy(predicate, comparator) {
+function getSpeakersBy(predicates) {
   // @fixme: getListOfSlots is not a function
+
+  // return require("./schedule")
+  // .getListOfSlots()
+  // .then(slots => {
+  //   if (comparator) {
+  //     return Predicates.filter(slots, predicate, comparator);
+  //   }
+  //   return slots;
+  // })
+
   return require("./schedule")
     .getListOfSlots()
-    .then(slots => Predicates.filter(slots, predicate, comparator))
     .then(slots => {
-      const speakers = slots
-        .map(slots => slots.talk.speakers)
-        .reduce((acc, sp) => acc.concat(sp), [])
-        .reduce((acc, sp) => acc.set(sp.name, sp), new Map());
-      return Array.from(speakers.values());
+      predicates.forEach(prediate => {
+        slots = prediate(slots);
+      });
+      return slots;
     })
-    .then(speakers => Promise.all([speakers, getSpeakersAsObjet()]))
+    .then(getSpeakersFromSlots);
+}
+
+function getSpeakersFromSlots(slots) {
+  const speakers = slots
+    .map(slots => slots.talk.speakers)
+    .reduce((acc, sp) => acc.concat(sp), [])
+    .reduce((acc, sp) => acc.set(sp.name, sp), new Map());
+
+  return Promise.resolve(Array.from(speakers.values()))
+    .then(speakers => Promise.all([speakers, getSpeakersAsObject()]))
     .then(([speakers, speakersWithDetails]) => {
       return speakers.map(speaker => {
         const uuid = speaker.link.href.split("/").pop();
-        console.log("found uuid", uuid);
         return speakersWithDetails.get(uuid);
       });
     });
 }
 
-function getSpeakersByRoomName(roomName) {
-  return getSpeakersBy(Predicates.byRoomName, roomName);
+function getSpeakersByRoomName(roomName = "") {
+  return getSpeakersBy([
+    slots =>
+      Predicates.filter(
+        slots,
+        Predicates.byRoomName,
+        roomName.toLocaleLowerCase()
+      )
+  ]);
 }
 
-function getSpeakersByTag(tag) {
-  return getSpeakersBy(Predicates.byTag, tag);
+function getSpeakersByTag(tag = "") {
+  return getSpeakersBy([Predicates.filterByTag(tag)]);
+}
+
+function getSpeakersByDay(day = "") {
+  return getSpeakersBy([Predicates.filterByDay(day)]);
 }
 
 module.exports = {
-  getSpeakersAsObjet,
+  getSpeakersAsObject,
   getSpeakersAsArray,
   getSpeakersByTag,
-  getSpeakersByRoomName
+  getSpeakersByRoomName,
+  getSpeakersByDay,
+  getSpeakersBy,
+  getSpeakersFromSlots
 };
