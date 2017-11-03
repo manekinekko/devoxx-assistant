@@ -21,7 +21,7 @@ module.exports = app => {
 
   if (time) {
     const t = time.split(":");
-    // warning: this will set the day to "today"
+    // warning: moment will set the day to "today"
     currentTime = moment({
       hour: t[0],
       minute: t[1],
@@ -50,7 +50,10 @@ module.exports = app => {
         foundManySpeakers(app, slots, roomName, day, currentTime);
       }
     })
-    .catch(e => app.ask(`${e}`));
+    .catch(e => {
+      app.error(e);
+      app.ask(`${e}`);
+    });
 };
 
 function foundNoSpeaker(app, roomName, currentTime) {
@@ -81,14 +84,35 @@ function foundNoSpeaker(app, roomName, currentTime) {
 function foundOneSpeaker(app, slot, day, time) {
   const speakers = slot.talk.speakers.map(speaker => speaker.name).join(", ");
   app.data.slotId = slot.id;
-  app.ask(
-    `I found this talk by ${speakers} at ${slot.fromTime}, it's called: ${slot
-      .talk.title}. Wanna more details?`
-  );
+
+  if (app.hasScreen()) {
+    app.ask(
+      app
+        .buildRichResponse()
+        .addSimpleResponse(
+          `I found this talk by ${speakers}, it's called: "${slot
+            .talk.title}. The talk starts at ${slot.fromTime} in ${slot.roomName}. It will end at ${slot.toTime}`
+        )
+        .addBasicCard(
+          app
+            .buildBasicCard(slot.talk.summary)
+            .setTitle(slot.talk.title)
+            .addButton(
+              "Read more",
+              `https://cfp.devoxx.be/2017/talk/${slot.talk
+                .id}/${slot.talk.title.replace(/\s/g, "_")}`
+            )
+        )
+        .addSuggestions(speakers.split(","))
+    );
+  } else {
+    app.ask(
+      `I found this talk by ${speakers} at ${slot.fromTime}, it's called: "${slot
+        .talk.title}". Wanna more details?`
+    );
+  }
 }
 function foundManySpeakers(app, slots, roomName, day, currentTime) {
-  app.debug("xxxx", day, currentTime);
-
   getSpeakersFromSlots(slots).then(speakers => {
     if (app.hasScreen()) {
       let title = `I found ${speakers.length} speakers presenting in ${roomName}`;
