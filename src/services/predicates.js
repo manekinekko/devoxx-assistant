@@ -88,12 +88,12 @@ module.exports = class Predicates {
 
   static byTag(slots, tag) {
     return slots
-      .filter(slot => slot.talk)
-      .filter(slot =>
-        slot.talk.tags.some(ctag =>
-          ctag.value.toLowerCase().includes(tag.toLowerCase())
-        )
-      );
+    .filter(slot => slot.talk)
+    .filter(slot =>
+      slot.talk.tags.some(ctag =>
+        ctag.value.toLowerCase().includes(tag.toLowerCase())
+      )
+    );
   }
 
   static filterByTag(tag) {
@@ -166,10 +166,10 @@ module.exports = class Predicates {
       // if the user had provided a day ("2017-11-08"), use it
       // otherwise, use the current day from slot.
       // in both case, use the same "currentTime" that the user had provided
-      if (date) {
+      if (!date) {
         date = moment(slot.fromTimeMillis);
       }
-      
+
       // currentTime = moment({
       //   day: date.day()-1,
       //   month: date.month()+1,
@@ -178,7 +178,9 @@ module.exports = class Predicates {
       //   minute: currentTime.minute(),
       //   second: currentTime.second()
       // });
-      currentTime = moment(`${date.format("YYYY-MM-DD")}T${currentTime.format("HH:mm:SS[.]SSSS")}`);
+      currentTime = moment(
+        `${date.format("YYYY-MM-DD")}T${currentTime.format("HH:mm:SS[.]SSSS")}`
+      );
 
       const fromTime = moment(slot.fromTimeMillis);
       const toTime = moment(slot.toTimeMillis);
