@@ -8447,17 +8447,17 @@
   "break": null,
   "roomSetup": "theatre",
   "talk": {
-   "trackId": "track.4",
+   "trackId": "track.3",
    "talkType": "Conference",
    "tags": [
     {
-     "value": "TBA"
+     "value": "Containers"
     },
     {
-     "value": "TBA"
+     "value": "Kubernetes"
     },
     {
-     "value": "TBA"
+     "value": "Red Hat OpenShift"
     },
     {
      "value": ""
@@ -8466,23 +8466,23 @@
      "value": ""
     }
    ],
-   "track": "Server Side Java",
+   "track": "Cloud, Containers &amp; Infrastructure",
    "audienceLevel": "l1",
-   "summaryAsHtml": "<p>TBA</p>\n",
-   "id": "LCZ-6177",
+   "summaryAsHtml": "<p>Have you ever wondered if operations tools like Kubernetes can be useful for engineers? In this talk we shall take a look at OpenShift, distribution of Kubernetes, from the engineer’s perspective - what benefits you can get and what features you can expect. After this talk you will be sure, that these tools have bunch of features that engineers can benefit from and you will learn how to utilize them for fun and profit. Last but not least, you will see live demos!</p>\n",
+   "id": "SGB-4152",
    "speakers": [
     {
      "link": {
-      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/4d4e0b394874de8b83b1d78d13aeb3879d3763b8",
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/71421b9ab8494b42783ce39849414d4360314359",
       "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Devoxx Partner"
+      "title": "Marek Jelen"
      },
-     "name": "Devoxx Partner"
+     "name": "Marek Jelen"
     }
    ],
-   "title": "RedHat Partner Slot",
+   "title": "OpenShift - the power of Kubernetes for developers",
    "lang": "en",
-   "summary": "TBA"
+   "summary": "Have you ever wondered if operations tools like Kubernetes can be useful for engineers? In this talk we shall take a look at OpenShift, distribution of Kubernetes, from the engineer’s perspective - what benefits you can get and what features you can expect. After this talk you will be sure, that these tools have bunch of features that engineers can benefit from and you will learn how to utilize them for fun and profit. Last but not least, you will see live demos!"
   },
   "fromTime": "09:30",
   "toTimeMillis": 1510219200000,
@@ -12246,7 +12246,7 @@
    ],
    "track": "Big Data &amp; Machine Learning",
    "audienceLevel": "l2",
-   "summaryAsHtml": "<p>The hottest topic in computer science today is machine learning and deep neural networks. Many problems deemed &quot;impossible&quot; only 5 years ago have now been solved by deep learning: playing GO, recognising what is in an image, translating languages, ...</p>\n<p>Many software developers are eager to adopt these new technologies as soon as they come out of research labs and the goal of this session is to equip you to do so. Last year at Devoxx, I explained the basic principles behind neural networks. This year, we will focus on neural network architectures, dive into the most recent advances in the field and give you tips, best practices and pointers to apply these techniques in your projects. No PhD required.</p>\n<p>This university session will cover the newest deep learning developments in image recognition, natural language processing and reinforcement learning. Watching last year&#x27;s recording beforehand (https://youtu.be/vq2nnJ4g6N0) is a good idea but all the necessary concepts will be reexplained.</p>\n",
+   "summaryAsHtml": "<p>The hottest topic in computer science today is machine learning and deep neural networks. Many problems deemed &quot;impossible&quot; only 5 years ago have now been solved by deep learning: playing GO, recognising what is in an image, translating languages, ...</p>\n<p>Software engineers are eager to adopt these new technologies as soon as they come out of research labs and the goal of this session is to equip you to do so. Last year at Devoxx, we covered the basic principles behind neural networks. This year, we will focus on neural network architectures, dive into the most recent advances in the field and give you tips, engineering best practices and pointers to apply these techniques in your projects. No PhD required.</p>\n<p>This session will cover the newest deep learning developments in image recognition and convolutional neural networks. Watching last year&#x27;s recording beforehand (https://youtu.be/vq2nnJ4g6N0) is a good idea but all the necessary concepts will be reexplained.</p>\n",
    "id": "PFZ-0118",
    "speakers": [
     {
@@ -12258,9 +12258,9 @@
      "name": "Martin Görner"
     }
    ],
-   "title": "Advances in machine learning, explained for software engineers",
+   "title": "Tensorflow, deep learning and modern convnets, without a PhD",
    "lang": "en",
-   "summary": "The hottest topic in computer science today is machine learning and deep neural networks. Many problems deemed \"impossible\" only 5 years ago have now been solved by deep learning: playing GO, recognising what is in an image, translating languages, ...\r\n\r\nMany software developers are eager to adopt these new technologies as soon as they come out of research labs and the goal of this session is to equip you to do so. Last year at Devoxx, I explained the basic principles behind neural networks. This year, we will focus on neural network architectures, dive into the most recent advances in the field and give you tips, best practices and pointers to apply these techniques in your projects. No PhD required.\r\n\r\nThis university session will cover the newest deep learning developments in image recognition, natural language processing and reinforcement learning. Watching last year's recording beforehand (https://youtu.be/vq2nnJ4g6N0) is a good idea but all the necessary concepts will be reexplained."
+   "summary": "The hottest topic in computer science today is machine learning and deep neural networks. Many problems deemed \"impossible\" only 5 years ago have now been solved by deep learning: playing GO, recognising what is in an image, translating languages, ...\r\n\r\nSoftware engineers are eager to adopt these new technologies as soon as they come out of research labs and the goal of this session is to equip you to do so. Last year at Devoxx, we covered the basic principles behind neural networks. This year, we will focus on neural network architectures, dive into the most recent advances in the field and give you tips, engineering best practices and pointers to apply these techniques in your projects. No PhD required.\r\n\r\nThis session will cover the newest deep learning developments in image recognition and convolutional neural networks. Watching last year's recording beforehand (https://youtu.be/vq2nnJ4g6N0) is a good idea but all the necessary concepts will be reexplained."
   },
   "fromTime": "17:50",
   "toTimeMillis": 1510249200000,
