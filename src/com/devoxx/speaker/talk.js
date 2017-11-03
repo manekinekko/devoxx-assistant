@@ -45,5 +45,8 @@ module.exports = app => {
         );
       }
     })
-    .catch(e => app.ask(`${e}`));
+    .catch(e => {
+      app.error(e);
+      app.ask(`${e}`);
+    });
 };

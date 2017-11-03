@@ -41,8 +41,8 @@ module.exports = app => {
       }
     })
     .catch(e => {
-      console.error(e);
-      app.tell(
+      app.error(e);
+      app.ask(
         `Oops! Something went wrong while fetching the topics list. Please try again.`
       );
     });

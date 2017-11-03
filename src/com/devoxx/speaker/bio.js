@@ -50,5 +50,9 @@ module.exports = app => {
     } else {
       app.ask(`Sorry, I could not find any information about ${speakerName}.`);
     }
+  })
+  .catch(e => {
+    app.error(e);
+    app.ask(`${e}`);
   });
 };
