@@ -1,5 +1,42 @@
 [
  {
+  "uuid": "7c126901b393c4bfa1cd2c27b1a75689a40a0e8a",
+  "bioAsHtml": "",
+  "acceptedTalks": [
+   {
+    "talkType": "Deep Dive",
+    "track": "Big Data &amp; Machine Learning",
+    "links": [
+     {
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/talks/ZZD-8893",
+      "rel": "http://cfp.devoxx.be/api/profile/talk",
+      "title": "More details about this talk"
+     },
+     {
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/3b4de9092cd9236a4953c5e8bffed0c5de2f7537",
+      "rel": "http://cfp.devoxx.be/api/profile/speaker",
+      "title": "Martin Görner"
+     },
+     {
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/7c126901b393c4bfa1cd2c27b1a75689a40a0e8a",
+      "rel": "http://cfp.devoxx.be/api/profile/speaker",
+      "title": "Nithum Thain"
+     }
+    ],
+    "id": "ZZD-8893",
+    "title": "Tensorflow and modern deep learning architectures, without a PhD"
+   }
+  ],
+  "company": null,
+  "bio": "",
+  "lastName": "Thain",
+  "firstName": "Nithum",
+  "blog": null,
+  "avatarURL": "http://www.gravatar.com/avatar/9d8fc754b5b04d2fd89979401460f1df",
+  "twitter": null,
+  "lang": "fr"
+ },
+ {
   "uuid": "f56c0d1d55e96550e8239699196c483577b79015",
   "bioAsHtml": "<p>I am a developer, technical lead, consultant, and architect with more than 25 years of experience working both in the U.S. and in Europe. I have worked on numerous projects for small to large-sized companies and have developed software tools and enterprise applications for finance, medical, logistics, business services, and database mining. I also have an MBA from a U.S. AACSB-certified school which I hope can help companies build better products and provide better services with the goal of increasing quality, customer satisfaction, and ultimately higher profitability.</p>\n",
   "acceptedTalks": [
