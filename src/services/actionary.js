@@ -1,16 +1,24 @@
-const sdk = require("actions-on-google");
-const DialogflowApp = sdk.DialogflowApp;
-const ActionsSdkApp = sdk.ActionsSdkApp;
+//#region debugging
+const DEBUG_NS = "actions-on-google:actionary";
+process.env.DEBUG = `${DEBUG_NS}:*`;
+process.env.DEBUG_DEPTH = 2;
+process.env.DEBUG_COLORS = true;
+process.env.DEBUG_SHOW_HIDDEN = true;
+const Debug = require("debug");
+// const log = Debug(`${DEBUG_NS}:log`);
+// const error = Debug(`${DEBUG_NS}:error`);
+// log.log = console.log.bind(console);
+// error.error = console.error.bind(console);
+//#endregion
+
 const path = require("path");
 const fs = require("fs");
 
+const sdk = require("actions-on-google");
+const DialogflowApp = sdk.DialogflowApp;
+const ActionsSdkApp = sdk.ActionsSdkApp;
 const moment = require("moment");
 
-const Debug = require("debug");
-process.env.DEBUG = "actions-on-google:*";
-process.env.DEBUG_COLORS = true;
-process.env.DEBUG_DEPTH = "4";
-process.env.DEBUG_SHOW_HIDDEN = true;
 
 const assert = (predicate, expecting, actual) => {
   if (predicate === false) {
@@ -55,8 +63,8 @@ class Actionary {
       // return +moment(instance.body_.timestamp).utcOffset("+02:00");
     };
 
-    instance.debug = Debug("actions-on-google:actionary:debug");
-    instance.error = Debug("actions-on-google:actionary:error");
+    instance.debug = Debug(`${DEBUG_NS}:debug`);
+    instance.error = Debug(`${DEBUG_NS}:error`);
   }
 
   setActions(actions) {
