@@ -3,12 +3,6 @@ process.env["NODE_PATH"] = process.cwd();
 require("module").Module._initPaths();
 //#endregion
 
-const Debug = require("debug");
-process.env.DEBUG = 'actions-on-google:actionary:*';
-process.env.DEBUG_COLORS = true;
-process.env.DEBUG_DEPTH = "4";
-process.env.DEBUG_SHOW_HIDDEN = true;
-
 const { Actionary } = require("./src/services/actionary");
 
 const ACTIONS = [
