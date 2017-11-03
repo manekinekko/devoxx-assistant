@@ -19,16 +19,6 @@ function getSpeakersAsArray() {
 
 function getSpeakersBy(predicates) {
   // FIXME: getListOfSlots is not a function
-
-  // return require("./schedule")
-  // .getListOfSlots()
-  // .then(slots => {
-  //   if (comparator) {
-  //     return Predicates.filter(slots, predicate, comparator);
-  //   }
-  //   return slots;
-  // })
-
   return require("./schedule")
     .getListOfSlots()
     .then(slots => {
@@ -51,9 +41,16 @@ function getSpeakersFromSlots(slots) {
     .then(([speakers, speakersWithDetails]) => {
       return speakers.map(speaker => {
         const uuid = speaker.link.href.split("/").pop();
-        return speakersWithDetails.get(uuid);
+        const s = speakersWithDetails.get(uuid);
+        if (!s) {
+          console.error("************************************");
+          console.error(uuid, "NOT_FOUND in local speakers DB");
+          console.error("************************************");
+        }
+        return s
       });
-    });
+    })
+    .then(speakers => speakers.filter(speaker => !!speaker));
 }
 
 function getSpeakersByRoomName(roomName = "") {
