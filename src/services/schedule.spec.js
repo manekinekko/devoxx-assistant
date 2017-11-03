@@ -18,7 +18,7 @@ describe("testing schedule", () => {
     });
   });
 
-  [0, 28, 40, 26, 24, 15, 20, 22, 19, 12, 17].map((expectedValue, index) => {
+  [0, 28, 40, 27, 23, 15, 20, 22, 19, 12, 17].map((expectedValue, index) => {
     it(`should return ${expectedValue} topics for trackId=track.${index}`, () => {
       expect.assertions(1);
       return getTopicsByTrackId(`track.${index}`).then(slots =>
