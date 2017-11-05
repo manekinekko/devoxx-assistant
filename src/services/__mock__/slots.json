@@ -1793,6 +1793,14 @@
       "title": "Dimitris Andreadis"
      },
      "name": "Dimitris Andreadis"
+    },
+    {
+     "link": {
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/31f90ab8242bbf0356032cd4691e921961ba28ef",
+      "rel": "http://cfp.devoxx.be/api/profile/speaker",
+      "title": "Edson Yanaga"
+     },
+     "name": "Edson Yanaga"
     }
    ],
    "title": "WildFly AppServer & WildFly Swarm Community BOF",
@@ -11801,42 +11809,42 @@
   "break": null,
   "roomSetup": "theatre",
   "talk": {
-   "trackId": "track.10",
+   "trackId": "track.2",
    "talkType": "Conference",
    "tags": [
     {
-     "value": "security"
+     "value": "Java"
     },
     {
-     "value": "security best practices"
+     "value": "GPU programming"
     },
     {
-     "value": "Development"
+     "value": "GPU acceleration"
     },
     {
-     "value": ""
+     "value": "GPUs"
     },
     {
      "value": ""
     }
    ],
-   "track": "Architecture &amp; Security",
+   "track": "Java Language",
    "audienceLevel": "l1",
-   "summaryAsHtml": "<p>There is no shortcut to great security!  However, there are some practical steps that developers can take to contribute to the company&#x27;s security posture, and to help reduce the likelihood of the software you produce being at the center of a major incident.  This talk will cover some of these steps, and explain not only why but more importantly how developers can make a positive difference in a market where security is becoming a constantly bigger focus point for investors and consumers alike.</p>\n",
-   "id": "UXL-7671",
+   "summaryAsHtml": "<p>We will take a look what actually a GPU s. In the beginning we will have a small introduction on how it has evolved throw years. We will see how it can be utilized in the Java world. There will be a small intro to the world of OpenGL. And then we are going to move to CUDA and OpenCL technologies for general purpose massive computations on regular desktops or cloud machines. We will see what are the advantages and what are the main drawbacks.</p>\n",
+   "id": "ORO-1288",
    "speakers": [
     {
      "link": {
-      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/355f2b0a7f7419ef237532ac01d8735f570724b1",
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/2b61ae36394219bcfef299890d97bd3e662defc5",
       "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Siren Hofvander"
+      "title": "Dmitry Aleksandrov"
      },
-     "name": "Siren Hofvander"
+     "name": "Dmitry Aleksandrov"
     }
    ],
-   "title": "Blue Team Security.  Actual Security work for Actual Developers",
+   "title": "Java on the GPU. Where are we now?",
    "lang": "en",
-   "summary": "There is no shortcut to great security!  However, there are some practical steps that developers can take to contribute to the company's security posture, and to help reduce the likelihood of the software you produce being at the center of a major incident.  This talk will cover some of these steps, and explain not only why but more importantly how developers can make a positive difference in a market where security is becoming a constantly bigger focus point for investors and consumers alike."
+   "summary": "We will take a look what actually a GPU s. In the beginning we will have a small introduction on how it has evolved throw years. We will see how it can be utilized in the Java world. There will be a small intro to the world of OpenGL. And then we are going to move to CUDA and OpenCL technologies for general purpose massive computations on regular desktops or cloud machines. We will see what are the advantages and what are the main drawbacks."
   },
   "fromTime": "16:40",
   "toTimeMillis": 1510245000000,
@@ -12319,6 +12327,14 @@
     },
     {
      "link": {
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/85eb850bb5c8fc040bbd1b2b8fb87a45b6edbcb8",
+      "rel": "http://cfp.devoxx.be/api/profile/speaker",
+      "title": "Dimitris Andreadis"
+     },
+     "name": "Dimitris Andreadis"
+    },
+    {
+     "link": {
       "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/ae00337e3b9c1680715e6e553e59bd2dcdd4cf7d",
       "rel": "http://cfp.devoxx.be/api/profile/speaker",
       "title": "Ivar Grimstad"
@@ -12332,6 +12348,14 @@
       "title": "Martijn Verburg"
      },
      "name": "Martijn Verburg"
+    },
+    {
+     "link": {
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/5baf477a1c6f8b4f096fae4b01adf85bdfd9380c",
+      "rel": "http://cfp.devoxx.be/api/profile/speaker",
+      "title": "Steve Poole"
+     },
+     "name": "Steve Poole"
     }
    ],
    "title": "Opening Up Java EE: Panel Discussion",
