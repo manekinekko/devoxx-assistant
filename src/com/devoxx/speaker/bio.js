@@ -4,6 +4,13 @@ module.exports = app => {
   let speakerName = app.getSelectedOption();
   if (!speakerName) {
     speakerName = app.data.speakerName;
+    if (!speakerName) {
+      speakerName = app.getArgument("speaker-name");
+    }
+  }
+
+  if (!speakerName) {
+    app.ask(`Which speaker are you looking for?`);
   }
 
   getSpeakersAsArray().then(speakers => {
@@ -21,6 +28,9 @@ module.exports = app => {
       app.data.selectedSpeakerUuid = speaker.uuid;
 
       if (app.hasScreen()) {
+
+        app.setContext("speaker-talks", 1);
+
         app.ask(
           app
             .buildRichResponse()
