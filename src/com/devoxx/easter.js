@@ -77,9 +77,15 @@ const audio = `<audio src="https://storage.googleapis.com/devoxx-be-2017.appspot
 
 module.exports = app => {
   const xp = app.getArgument("xp");
-  let say = `<speak>${take(JOKES, 1)}</speak>`;
+  let say = `${take(JOKES, 1)}`;
+  
   if (xp) {
-    say = `<speak>${audio}</speak>`;
+    if (app.hasAudio()) {
+      say = `<speak>${audio}</speak>`;
+    }
+    else {
+      say = "Congratulations! You've won a ticket for the next Devoxx... No, I'm just kidding.";
+    }
   }
   app.tell(say);
 };

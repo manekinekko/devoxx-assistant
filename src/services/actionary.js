@@ -55,6 +55,11 @@ class Actionary {
         instance.SurfaceCapabilities.SCREEN_OUTPUT
       );
     };
+    instance.hasAudio = () => {
+      return instance.hasSurfaceCapability(
+        instance.SurfaceCapabilities.AUDIO_OUTPUT
+      );
+    };
 
     instance.getDateTimeFromRequest = () => {
       // @todo for testing purposes only.
