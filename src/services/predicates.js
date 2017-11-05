@@ -66,11 +66,16 @@ module.exports = class Predicates {
     return acc.slice(0, maxElements);
   }
 
-  static byTalkType(slots) {
-    slots = slots
+  static byTalkType(slots, talkType) {
+    return slots
       .filter(slot => slot.talk)
-      .map(slot => slot.talk.talkType.trim());
-    return [...new Set(slots)];
+      .filter(slot =>
+        slot.talk.talkType.toLowerCase().includes(talkType.toLowerCase())
+      );
+  }
+
+  static filterByTalkType(talkType) {
+    return slots => Predicates.filter(slots, Predicates.byTalkType, talkType);
   }
 
   static byRoom(slots) {
@@ -78,22 +83,14 @@ module.exports = class Predicates {
     return [...new Set(slots)];
   }
 
-  static bySpeaker(slots) {
-    const speakers = slots
-      .filter(slot => slot.talk)
-      .map(slot => slot.talk.speakers.map(speaker => speaker.name.trim()).pop())
-      .sort();
-    return new Set(speakers);
-  }
-
   static byTag(slots, tag) {
     return slots
-    .filter(slot => slot.talk)
-    .filter(slot =>
-      slot.talk.tags.some(ctag =>
-        ctag.value.toLowerCase().includes(tag.toLowerCase())
-      )
-    );
+      .filter(slot => slot.talk)
+      .filter(slot =>
+        slot.talk.tags.some(ctag =>
+          ctag.value.toLowerCase().includes(tag.toLowerCase())
+        )
+      );
   }
 
   static filterByTag(tag) {
@@ -131,14 +128,25 @@ module.exports = class Predicates {
   }
 
   static byTopic(slots, topic) {
-    return slots
-      .filter(slot => {
-        return (
-          slot.talk &&
-          slot.talk.track.toLowerCase().includes(topic.toLowerCase())
-        );
-      })
-      .map(slot => slot.talk);
+    return slots.filter(slot => slot.talk).filter(slot => {
+      const findInTrack = slot.talk.track
+        .toLowerCase()
+        .includes(topic.toLowerCase());
+      const findInTags = slot.talk.tags
+        .map(tag => tag.value)
+        .join(",")
+        .toLowerCase()
+        .includes(topic.toLowerCase());
+      const findInTitle = slot.talk.title
+        .toLocaleLowerCase()
+        .includes(topic.toLowerCase());
+
+      return findInTrack || findInTags || findInTitle;
+    });
+  }
+
+  static filterByTopic(topic) {
+    return slots => Predicates.filter(slots, Predicates.byTopic, topic);
   }
 
   static byTime(slots, [currentTime, date = null]) {
@@ -201,5 +209,31 @@ module.exports = class Predicates {
 
   static filterByTime([time = null, date = null]) {
     return slots => Predicates.filter(slots, Predicates.byTime, [time, date]);
+  }
+
+  static bySpeakerName(speakers, name) {
+    name = name.toLocaleLowerCase().replace(/\s/g, "");
+    return speakers
+      .filter(speaker => {
+        const speakerName = `${speaker.firstName}${speaker.lastName}`
+          .toLocaleLowerCase()
+          .replace(/\s/g, "");
+        return speakerName.includes(name);
+      })
+      .pop();
+  }
+
+  static filterBySpeakerName(name) {
+    return speakers =>
+      Predicates.filter(speakers, Predicates.bySpeakerName, name);
+  }
+
+  static bySpeakerUUID(speakers, uuid) {
+    return speakers.filter(speaker => speaker.uuid === uuid).pop();
+  }
+
+  static filterBySpeakerUUID(uuid) {
+    return speakers =>
+      Predicates.filter(speakers, Predicates.bySpeakerUUID, uuid);
   }
 };
