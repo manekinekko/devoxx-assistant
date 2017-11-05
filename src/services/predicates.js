@@ -11,7 +11,11 @@ module.exports = class Predicates {
   }
 
   static byTalkId(slots, id) {
-    return slots.filter(slot => slot.talk && slot.talk.id === id);
+    return slots.filter(slot => slot.talk).filter(slot => slot.talk.id === id).pop();
+  }
+
+  static filterByTalkId(id) {
+    return slots => Predicates.filter(slots, Predicates.byTalkId, id);
   }
 
   static byTalkName(slots) {

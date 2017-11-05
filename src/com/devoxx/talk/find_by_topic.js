@@ -59,6 +59,8 @@ function foundTalksByTopicAndTalkType(app, talkType, topic, slots) {
     const room = slot.roomName;
     msg = `${msg} one ${talkType} about ${topic} by ${speakers}. The title is "${talkTitle}" and it's scheduled on ${day} at ${time} in ${room}.`;
 
+    app.data.talkId = slot.talk.id;
+
     if (app.hasScreen()) {
       buildCard(app, talkType, topic, slot);
     } else {
@@ -71,6 +73,8 @@ function foundTalksByTopicAndTalkType(app, talkType, topic, slots) {
       msg = `${msg} Here are 3 of them.`;
     }
 
+    app.data.talkIds = slots.map(slot => slot.talk.id);
+
     const titles = slots.map((slot, index) => {
       let speakers = slot.talk.speakers
         .map(speaker => speaker.name)
@@ -79,7 +83,14 @@ function foundTalksByTopicAndTalkType(app, talkType, topic, slots) {
         .title}" by ${speakers}; on ${slot.day} at ${slot.fromTime} in ${slot.roomName}.`;
     });
 
-    msg = `${msg} ${titles.join(" ", " and ")}`;
+    const ordinals = titles
+      .map((talk, index) => ordinal(index))
+      .join(", ", " or ");
+
+    msg = `${msg} ${titles.join(
+      " ",
+      " and "
+    )} Which talk are you interested in: The ${ordinals} one?`;
     if (app.hasScreen()) {
       buildList(app, msg, slots);
     } else {
@@ -164,7 +175,7 @@ function buildCard(app, talkType, topic, slot) {
   );
 }
 
-module.exports.ordinal = function ordinal(index) {
+function ordinal(index) {
   switch (index) {
     case 0:
       return "1st";
@@ -176,3 +187,5 @@ module.exports.ordinal = function ordinal(index) {
       return `${index + 1}th`;
   }
 }
+
+module.exports.ordinal = ordinal;

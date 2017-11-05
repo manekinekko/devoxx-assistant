@@ -21,12 +21,24 @@ module.exports = app => {
 
   if (time) {
     const t = time.split(":");
-    // warning: moment will set the day to "today"
-    currentTime = moment({
-      hour: t[0],
-      minute: t[1],
-      second: t[2]
-    });
+    if (date) {
+      const date_ = moment(date);
+      currentTime = moment({
+        day: date_.day(),
+        month: date_.month(),
+        year: date_.year(),
+        hour: t[0],
+        minute: t[1],
+        second: t[2]
+      });
+    } else {
+      // warning: moment will set the day to "today"
+      currentTime = moment({
+        hour: t[0],
+        minute: t[1],
+        second: t[2]
+      });
+    }
   }
 
   if (when && when.includes("now")) {
@@ -34,11 +46,15 @@ module.exports = app => {
     day = currentTime.format("dddd").toLocaleLowerCase();
   }
 
+  app.debug(`finding slots on ${date} at ${time} in ${roomName}`);
+
   getListOfSlots()
     .then(Predicates.filterByRoom(roomName))
     .then(Predicates.filterByDay(day))
     .then(Predicates.filterByTime([currentTime, date]))
     .then(slots => {
+      app.debug(`found ${slots.length} slot`);
+
       if (slots.length === 0) {
         // no current talk
         foundNoSpeaker(app, roomName, currentTime);
@@ -82,17 +98,22 @@ function foundNoSpeaker(app, roomName, currentTime) {
   }
 }
 function foundOneSpeaker(app, slot, day, time) {
-  const speakers = slot.talk.speakers.map(speaker => speaker.name).join(", ");
+  const speakers = slot.talk.speakers
+    .map(speaker => speaker.name)
+    .join(", ", " and ");
   app.data.slotId = slot.id;
+  const msg = `I found this ${slot.talk.talkType}: "${slot.talk
+    .title}" by ${speakers}. It is scheduled from ${slot.fromTime} to ${slot.toTime} in ${slot.roomName}. Wanna more details?`;
+  // const msg = `I found this talk by ${speakers}, it's called: "${slot.talk.title}. The talk starts at ${slot.fromTime} in ${slot.roomName}. It will end at ${slot.toTime}`;
+
+  app.data.talkId = slot.talk.id;
+  app.setContext("find-by-id", 1);
 
   if (app.hasScreen()) {
     app.ask(
       app
         .buildRichResponse()
-        .addSimpleResponse(
-          `I found this talk by ${speakers}, it's called: "${slot
-            .talk.title}. The talk starts at ${slot.fromTime} in ${slot.roomName}. It will end at ${slot.toTime}`
-        )
+        .addSimpleResponse(msg)
         .addBasicCard(
           app
             .buildBasicCard(slot.talk.summary)
@@ -106,10 +127,7 @@ function foundOneSpeaker(app, slot, day, time) {
         .addSuggestions(speakers.split(","))
     );
   } else {
-    app.ask(
-      `I found this talk by ${speakers} at ${slot.fromTime}, it's called: "${slot
-        .talk.title}". Wanna more details?`
-    );
+    app.ask(msg);
   }
 }
 function foundManySpeakers(app, slots, roomName, day, currentTime) {
@@ -135,14 +153,13 @@ function foundManySpeakers(app, slots, roomName, day, currentTime) {
       });
 
       app.setContext("speaker-bio", 1);
+
       app.askWithList(`${title} Which speaker are you interested in?`, list);
     } else {
       const randomSpeakers = take(speakers, 3);
       const speakersNames = randomSpeakers
         .map(speaker => `${speaker.firstName} ${speaker.lastName}`)
         .join(", ");
-
-      app.setContext("speakers", 2, randomSpeakers);
 
       app.ask(
         `I found ${speakers.length} speakers presenting in ${roomName}. Here are 3 of them: ${speakersNames}. Which speaker are you interested in?`

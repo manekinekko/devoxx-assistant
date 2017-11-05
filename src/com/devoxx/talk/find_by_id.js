@@ -3,6 +3,9 @@ const Predicates = require("src/services/predicates");
 
 module.exports = app => {
   let selectedTalkId = app.getSelectedOption();
+  if (!selectedTalkId) {
+    selectedTalkId = app.data.talkId;
+  }
 
   getListOfSlots()
     .then(slots =>
@@ -38,7 +41,7 @@ module.exports = app => {
         } else {
           app.ask(
             `Here is the summary of "${slot.talk.title}" by ${speakers}: ${slot
-              .talk.summary}. Do you want to know more?`
+              .talk.summary}. Anything else I can do for you?`
           );
         }
       } else {
