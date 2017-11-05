@@ -18,7 +18,7 @@ module.exports = app => {
         }
       } else {
         const randomSlots = take(slots, 3);
-        const slotsTitles = randomSlots.map(slot => slot.title).join(", ");
+        const slotsTitles = randomSlots.map(slot => slot.title).join(", ", " and ");
 
         app.ask(
           `I found ${slots.length} talks labeled with the "${tag}" tag. Here are 3 of them: ${slotsTitles}. Which talk are you interested in?`

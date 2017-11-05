@@ -41,7 +41,7 @@ module.exports = app => {
 
           const speakersNames = randomSpeakers
             .map(speaker => `${speaker.firstName} ${speaker.lastName}`)
-            .join(", ");
+            .join(", ", " and ");
 
           app.ask(
             `I found ${speakers.length} speakers presenting about ${tag}. Here are 3 of them: ${speakersNames}. Would you like to know something else?`

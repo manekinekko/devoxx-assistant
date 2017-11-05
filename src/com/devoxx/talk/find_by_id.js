@@ -14,7 +14,7 @@ module.exports = app => {
         let tags = slot.talk.tags.map(tag => tag.value);
         let speakers = slot.talk.speakers
           .map(speaker => speaker.name)
-          .join(", ");
+          .join(", ", " and ");
 
         app.setContext("speaker-talks", 1);
 

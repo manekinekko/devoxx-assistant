@@ -30,7 +30,7 @@ module.exports = app => {
           const randomTopics = take(topics, 3);
           const topicsTitles = randomTopics
             .map(topic => topic.title)
-            .join(", ");
+            .join(", ", " and ");
 
           app.setContext("topics", 2, randomTopics);
 

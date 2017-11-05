@@ -37,7 +37,7 @@ module.exports = app => {
         app.askWithList(`${title}. Which talk are you interested in?`, list);
       } else {
         const randomSlots = take(slots, 3);
-        const slotsTitles = randomSlots.map(slot => slot.title).join(", ");
+        const slotsTitles = randomSlots.map(slot => slot.title).join(", ", " and ");
 
         app.ask(
           `I found ${slots.length} talks in ${topic.title}. Here are 3 of them: ${slotsTitles}. Which talk are you interested in?`
