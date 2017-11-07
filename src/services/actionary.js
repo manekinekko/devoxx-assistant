@@ -64,8 +64,8 @@ class Actionary {
     instance.getDateTimeFromRequest = () => {
       // @todo for testing purposes only.
       // 2017-11-09T13:36:40+01:00
-      return moment(1510231000000);
-      // return +moment(instance.body_.timestamp).utcOffset("+02:00");
+      // return moment(1510231000000);
+      return +moment(instance.body_.timestamp).utcOffset("+02:00");
     };
 
     instance.debug = Debug(`${DEBUG_NS}:debug`);
