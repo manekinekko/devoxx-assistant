@@ -133,7 +133,10 @@ function foundOneSpeaker(app, slot, day, time) {
 function foundManySpeakers(app, slots, roomName, day, currentTime) {
   getSpeakersFromSlots(slots).then(speakers => {
     if (app.hasScreen()) {
-      let title = `I found ${speakers.length} speakers presenting in ${roomName}`;
+      let title = `I found ${speakers.length} speakers presenting`;
+      if (roomName) {
+        title = `${title} in ${roomName}`;
+      }
       title = day ? `${title} on ${day}` : `${title}`;
       title = currentTime ? `${title} at ${currentTime}.` : `${title}.`;
       let list = app.buildList(title);
