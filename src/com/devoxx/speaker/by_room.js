@@ -42,8 +42,8 @@ module.exports = app => {
   }
 
   if (when) {
-    currentTime = app.getDateTimeFromRequest();
-    day = moment(currentTime).format("dddd").toLowerCase();
+    currentTime = moment(app.getDateTimeFromRequest());
+    day = currentTime.format("dddd").toLowerCase();
   }
 
   app.debug(`date=${date} time=${time} roomName=${roomName} currentTime=${currentTime} day=${day}`);
@@ -74,7 +74,7 @@ module.exports = app => {
 
 function foundNoSpeaker(app, roomName, currentTime) {
 
-  roomName = roomName ? `in ${roomName}` : "";
+  roomName = roomName ? ` in ${roomName}` : "";
 
   if (currentTime) {
     const isNoTimeGiven = currentTime.hours() === 0;

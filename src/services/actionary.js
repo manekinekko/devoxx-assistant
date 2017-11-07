@@ -66,13 +66,15 @@ class Actionary {
       // 2017-11-09T13:36:40+01:00
       // return moment(1510231000000);
 
-      console.log("qsdqsd");
-      console.log(moment(1510061632000).format("dddd"));
-
+      
       // clean DialogFlow time format
-      const ts = instance.body_.timestamp.split(".")[0];
-
-      return +moment(ts).utcOffset("+1");
+      let ts = instance.body_.timestamp.split(".")[0];
+      ts = +moment(ts).add(1, "hour");
+      
+      console.log("qsdqsd");
+      console.log(moment(ts));
+    
+      return ts;
     };
 
     instance.debug = Debug(`${DEBUG_NS}:debug`);
