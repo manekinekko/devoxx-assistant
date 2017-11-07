@@ -149,7 +149,7 @@ function foundManySpeakers(app, slots, roomName, day, currentTime) {
           const name = `${speaker.firstName} ${speaker.lastName}`;
           list = list.addItems(
             app
-              .buildOptionItem(name, [name])
+              .buildOptionItem(name, [`Tell me more about ${name}`])
               .setTitle(name)
               .setDescription(speaker.bio)
               .setImage(speaker.avatarURL, name)
