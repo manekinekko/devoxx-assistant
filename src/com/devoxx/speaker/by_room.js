@@ -73,18 +73,21 @@ module.exports = app => {
 };
 
 function foundNoSpeaker(app, roomName, currentTime) {
+
+  roomName = roomName ? `in ${roomName}` : "";
+
   if (currentTime) {
     const isNoTimeGiven = currentTime.hours() === 0;
 
     if (isNoTimeGiven) {
       app.ask(
-        `Humm! There is no talk in ${roomName} on ${currentTime.format(
+        `Humm! There is no talk${roomName} on ${currentTime.format(
           "dddd"
         )}. You might wanna try with different days and room names.`
       );
     } else {
       app.ask(
-        `It seems there is no person speaking in ${roomName} on ${currentTime.format(
+        `It seems there is no person speaking${roomName} on ${currentTime.format(
           "dddd"
         )} at ${currentTime.format(
           "LT"
@@ -93,7 +96,7 @@ function foundNoSpeaker(app, roomName, currentTime) {
     }
   } else {
     app.ask(
-      `There is no talk in ${roomName}. You might wanna try with different room names.`
+      `There is no talk${roomName}. You might wanna try with different room names.`
     );
   }
 }
@@ -133,7 +136,7 @@ function foundOneSpeaker(app, slot, day, time) {
 function foundManySpeakers(app, slots, roomName, day, currentTime) {
   getSpeakersFromSlots(slots).then(speakers => {
     if (app.hasScreen()) {
-      let title = `I found ${speakers.length} speakers ${slots.length} talks`;
+      let title = `I found ${speakers.length} speakers and ${slots.length} talks`;
       if (roomName) {
         title = `${title} in ${roomName}`;
       }
