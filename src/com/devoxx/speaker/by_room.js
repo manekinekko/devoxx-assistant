@@ -106,7 +106,7 @@ function foundOneSpeaker(app, slot, day, time) {
     .join(", ", " and ");
   app.data.slotId = slot.id;
   const msg = `I found this ${slot.talk.talkType}: "${slot.talk
-    .title}" by ${speakers}. It is scheduled from ${slot.fromTime} to ${slot.toTime} in ${slot.roomName}. Wanna more details?`;
+    .title}" by ${speakers}. It is scheduled from ${slot.fromTime} to ${slot.toTime} in ${slot.roomName}.`;
   // const msg = `I found this talk by ${speakers}, it's called: "${slot.talk.title}. The talk starts at ${slot.fromTime} in ${slot.roomName}. It will end at ${slot.toTime}`;
 
   app.data.talkId = slot.talk.id;
