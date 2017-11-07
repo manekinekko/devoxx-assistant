@@ -65,7 +65,14 @@ class Actionary {
       // @todo for testing purposes only.
       // 2017-11-09T13:36:40+01:00
       // return moment(1510231000000);
-      return +moment(instance.body_.timestamp).utcOffset("+02:00");
+
+      console.log("qsdqsd");
+      console.log(moment(1510061632000).format("dddd"));
+
+      // clean DialogFlow time format
+      const ts = instance.body_.timestamp.split(".")[0];
+
+      return +moment(ts).utcOffset("+1");
     };
 
     instance.debug = Debug(`${DEBUG_NS}:debug`);

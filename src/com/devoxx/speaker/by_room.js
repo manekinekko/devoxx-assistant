@@ -41,12 +41,12 @@ module.exports = app => {
     }
   }
 
-  if (when && when.includes("now")) {
-    currentTime = moment(app.getDateTimeFromRequest());
-    day = currentTime.format("dddd").toLocaleLowerCase();
+  if (when) {
+    currentTime = app.getDateTimeFromRequest();
+    day = moment(currentTime).format("dddd").toLowerCase();
   }
 
-  app.debug(`finding slots on ${date} at ${time} in ${roomName}`);
+  app.debug(`date=${date} time=${time} roomName=${roomName} currentTime=${currentTime} day=${day}`);
 
   getListOfSlots()
     .then(Predicates.filterByRoom(roomName))
