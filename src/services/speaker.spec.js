@@ -1,11 +1,11 @@
 const { getSpeakersAsArray, getSpeakersByTag } = require("./speaker");
 const { writeJSON } = require("./utils/node");
 
-describe.only("testing schedule", () => {
+describe("testing schedule", () => {
   it("should list all speakers with details", () => {
     expect.assertions(1);
     return getSpeakersAsArray().then(speakers => {
-      // writeJSON("src/services/__mock__/speakers.json", speakers);
+      writeJSON("src/services/__mock__/speakers.json", speakers);
       expect(speakers).toMatchSnapshot();
     })
   });

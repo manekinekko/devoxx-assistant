@@ -70,15 +70,12 @@ class Actionary {
       // clean DialogFlow time format
       let ts = instance.body_.timestamp.split(".")[0];
       ts = +moment(ts).add(1, "hour");
-      
-      console.log("qsdqsd");
-      console.log(moment(ts));
     
       return ts;
     };
 
-    instance.debug = Debug(`${DEBUG_NS}:debug`);
     instance.error = Debug(`${DEBUG_NS}:error`);
+    instance.debug = Debug(`${DEBUG_NS}:debug`);
   }
 
   setActions(actions) {

@@ -1,12 +1,11 @@
 const list = require('./list');
 const ActionaryTest = require('src/services/actionary').ActionaryTest;
 
-describe.skip('list all topics', () => {
+describe('list all topics', () => {
 
-  it('call askWithList', () => {
+  it.skip('call askWithList', () => {
     const askWithList = spyOn(ActionaryTest, 'askWithList');
-    return list(ActionaryTest).then(_ => expect(askWithList).toHaveBeenCalled())
-    
+    return list(ActionaryTest).then(_ => expect(askWithList).toHaveBeenCalled());
   });
 
 })

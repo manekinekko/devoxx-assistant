@@ -729,7 +729,7 @@
    ],
    "track": "Architecture &amp; Security",
    "audienceLevel": "l1",
-   "summaryAsHtml": "<p>During this hands-on we will build our own practical blockchain using the open-source, freely available Hyperledger Fabric. At the start of the presentation I will shortly introduce The Hyperledger project founded by the Linux Foundation and choice of Hyperledger Fabric in relation to other (private) blockchains. The hands-on lab will go through the pre-requirements, how to run a blockchain, generating artifacts, starting and stopping the netword and writing your first blockchain application. At the end of this Hands-on you will have setup your own working blockchain and understand the concepts behind it.</p>\n",
+   "summaryAsHtml": "<p>During this hands-on we will build our own practical blockchain using the open-source, freely available Hyperledger Fabric and Composer. At the start of the presentation I will shortly introduce The Hyperledger project founded by the Linux Foundation and choice of Hyperledger Fabric in relation to other (private) blockchains. The hands-on lab will go through the pre-requirements, how to run a blockchain, generating artifacts, starting and stopping the netword and writing your first blockchain application. At the end of this Hands-on you will have setup your own working blockchain and understand the concepts behind it.</p>\n",
    "id": "RVU-5636",
    "speakers": [
     {
@@ -749,9 +749,9 @@
      "name": "Michael van Gastel"
     }
    ],
-   "title": "Building a practical Blockchain with Hyperledger Fabric",
+   "title": "Building a practical Blockchain with Hyperledger Fabric and Composer",
    "lang": "en",
-   "summary": "During this hands-on we will build our own practical blockchain using the open-source, freely available Hyperledger Fabric. At the start of the presentation I will shortly introduce The Hyperledger project founded by the Linux Foundation and choice of Hyperledger Fabric in relation to other (private) blockchains. The hands-on lab will go through the pre-requirements, how to run a blockchain, generating artifacts, starting and stopping the netword and writing your first blockchain application. At the end of this Hands-on you will have setup your own working blockchain and understand the concepts behind it.  "
+   "summary": "During this hands-on we will build our own practical blockchain using the open-source, freely available Hyperledger Fabric and Composer. At the start of the presentation I will shortly introduce The Hyperledger project founded by the Linux Foundation and choice of Hyperledger Fabric in relation to other (private) blockchains. The hands-on lab will go through the pre-requirements, how to run a blockchain, generating artifacts, starting and stopping the netword and writing your first blockchain application. At the end of this Hands-on you will have setup your own working blockchain and understand the concepts behind it.  "
   },
   "fromTime": "13:30",
   "toTimeMillis": 1509982200000,
@@ -1580,11 +1580,11 @@
    "speakers": [
     {
      "link": {
-      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/43ce34bea56fe72ae8953bb9d0fb435d8c9d0640",
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/cc3a8573c1f955659203ddc442a9cc2a38bcedd4",
       "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Dan Allen"
+      "title": "Alex Soto"
      },
-     "name": "Dan Allen"
+     "name": "Alex Soto"
     }
    ],
    "title": "Asciidoctor: New, Noteworthy, and Beyond",
@@ -2149,11 +2149,11 @@
    "speakers": [
     {
      "link": {
-      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/f82459c41f29e1e39ad39de404f976803711b8bf",
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/491546caecd893bf8472e938785699440b3a4b36",
       "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Guy Ernest"
+      "title": "Randall Hunt"
      },
-     "name": "Guy Ernest"
+     "name": "Randall Hunt"
     }
    ],
    "title": "Deep Dive into Deep Learning with MXNet",
@@ -3213,9 +3213,9 @@
      "link": {
       "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/a7748720f4f3b7d6442be252f2d77c5c4016cdad",
       "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Audrey Neveu"
+      "title": "Neveu Audrey"
      },
-     "name": "Audrey Neveu"
+     "name": "Neveu Audrey"
     }
    ],
    "title": "WebHooks vs WebSub: which one to stream your events in Real Time?",
@@ -3754,21 +3754,6 @@
   "roomName": "BOF 2",
   "slotId": "bof_bof2_tuesday_7_20h30_21h30",
   "day": "tuesday"
- },
- {
-  "roomId": "bof1",
-  "notAllocated": true,
-  "fromTimeMillis": 1510059600000,
-  "break": null,
-  "roomSetup": "classroom",
-  "talk": null,
-  "fromTime": "14:00",
-  "toTimeMillis": 1510070400000,
-  "toTime": "17:00",
-  "roomCapacity": 70,
-  "roomName": "BOF 1",
-  "slotId": "lab_bof1_wednesday_7_14h0_17h0",
-  "day": "wednesday"
  },
  {
   "roomId": "a_hall",
@@ -4750,14 +4735,6 @@
       "title": "Randall Hunt"
      },
      "name": "Randall Hunt"
-    },
-    {
-     "link": {
-      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/69e5596a50112585d5acdb93e0a4da47a10a6a8d",
-      "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Arun Gupta"
-     },
-     "name": "Arun Gupta"
     }
    ],
    "title": "Build, Deploy, Debug and Tune Serverless Microservices",
@@ -5023,9 +5000,9 @@
      "link": {
       "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/ff25e17b8173dd3f5749e6ef227344e91317b3e8",
       "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Gautier Mechling"
+      "title": "Gautier MECHLING"
      },
-     "name": "Gautier Mechling"
+     "name": "Gautier MECHLING"
     }
    ],
    "title": "Using Android Things to detect & exterminate Reptilians",
@@ -6786,11 +6763,11 @@
    "speakers": [
     {
      "link": {
-      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/f82459c41f29e1e39ad39de404f976803711b8bf",
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/491546caecd893bf8472e938785699440b3a4b36",
       "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Guy Ernest"
+      "title": "Randall Hunt"
      },
-     "name": "Guy Ernest"
+     "name": "Randall Hunt"
     }
    ],
    "title": "Getting Started with Deep Learning and MXNet",
@@ -6920,14 +6897,6 @@
       "title": "Chris Munns"
      },
      "name": "Chris Munns"
-    },
-    {
-     "link": {
-      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/69e5596a50112585d5acdb93e0a4da47a10a6a8d",
-      "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Arun Gupta"
-     },
-     "name": "Arun Gupta"
     }
    ],
    "title": "Serverless Architecture Patterns and Best Practices",
@@ -7053,42 +7022,42 @@
   "break": null,
   "roomSetup": "theatre",
   "talk": {
-   "trackId": "track.1",
+   "trackId": "method_archi",
    "talkType": "Conference",
    "tags": [
     {
      "value": "documentation"
     },
     {
-     "value": "software engineering"
+     "value": "publish"
     },
     {
-     "value": "CI/CD practices"
+     "value": "Writing"
     },
     {
-     "value": "build infrastructure"
+     "value": "Git"
     },
     {
-     "value": "build automation"
+     "value": ""
     }
    ],
    "track": "Methodology &amp; Culture",
    "audienceLevel": "l1",
-   "summaryAsHtml": "<p>Technical documentation is often viewed as just a writing thing, and too often an afterthought. I’m here to show you documentation is just as much of a software project as the software it documents. All the same elements are at play: source “code”, compilation, validation, testing, publishing, versioning, and yes, even (meta) documentation. And the documentation really is part of shipping the software; you could even argue the face of it.</p>\n<p>In this talk, I’ll present various challenges that a documentation team faces and get you thinking about how to apply engineering practices to help solve them. As an engineering team, your goal should be to help writers write, not be stuck worrying about laborious tasks that would frankly horrify you if you knew they were being done manually. It’s also a good opportunity to put the practices you’ve honed to work, such as CI, CD, infrastructure as code, build automation, and, the most universal tool of all, scripting.</p>\n<p>You’ll walk away from this talk with a new perspective on documentation. It will no longer be just a writing thing, but rather a challenging engineering problem that you have the skills to help solve.</p>\n",
-   "id": "YRN-5686",
+   "summaryAsHtml": "<p>As coders, we use powerful tools everyday (IDE, versioning, build, intgration, deployment).\nWe also put a lot of effort on software quality with a set of best practices (tests, SoC, DRY, KISS...).\nDespite that, when it comes to documentation, we&#x27;re still using traditional desktop tools and wikis.</p>\n<p>By using a lightweight markup language like AsciiDoc, we&#x27;ll see how we can reuse our favourite coders&#x27; tools and practices to improve our documentation trough the whole cycle : writing, collaborating and publishing.</p>\n",
+   "id": "WLS-1207",
    "speakers": [
     {
      "link": {
-      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/43ce34bea56fe72ae8953bb9d0fb435d8c9d0640",
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/b179acb518d3f50c359dce765127ed09511e5c53",
       "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Dan Allen"
+      "title": "Hubert Sablonnière"
      },
-     "name": "Dan Allen"
+     "name": "Hubert Sablonnière"
     }
    ],
-   "title": "Applying Engineering Practices to Documentation",
+   "title": "Documentation as Code (explained to my dad)",
    "lang": "en",
-   "summary": "Technical documentation is often viewed as just a writing thing, and too often an afterthought. I’m here to show you documentation is just as much of a software project as the software it documents. All the same elements are at play: source “code”, compilation, validation, testing, publishing, versioning, and yes, even (meta) documentation. And the documentation really is part of shipping the software; you could even argue the face of it.\r\n\r\nIn this talk, I’ll present various challenges that a documentation team faces and get you thinking about how to apply engineering practices to help solve them. As an engineering team, your goal should be to help writers write, not be stuck worrying about laborious tasks that would frankly horrify you if you knew they were being done manually. It’s also a good opportunity to put the practices you’ve honed to work, such as CI, CD, infrastructure as code, build automation, and, the most universal tool of all, scripting.\r\n\r\nYou’ll walk away from this talk with a new perspective on documentation. It will no longer be just a writing thing, but rather a challenging engineering problem that you have the skills to help solve."
+   "summary": "As coders, we use powerful tools everyday (IDE, versioning, build, intgration, deployment).\r\nWe also put a lot of effort on software quality with a set of best practices (tests, SoC, DRY, KISS...).\r\nDespite that, when it comes to documentation, we're still using traditional desktop tools and wikis.\r\n\r\nBy using a lightweight markup language like AsciiDoc, we'll see how we can reuse our favourite coders' tools and practices to improve our documentation trough the whole cycle : writing, collaborating and publishing."
   },
   "fromTime": "16:40",
   "toTimeMillis": 1510158600000,
@@ -7754,9 +7723,9 @@
      "link": {
       "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/a7748720f4f3b7d6442be252f2d77c5c4016cdad",
       "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Audrey Neveu"
+      "title": "Neveu Audrey"
      },
-     "name": "Audrey Neveu"
+     "name": "Neveu Audrey"
     }
    ],
    "title": "Devoxx4Kids State of the Union",
@@ -8925,7 +8894,7 @@
    ],
    "track": "Architecture &amp; Security",
    "audienceLevel": "l1",
-   "summaryAsHtml": "<p>The Flowable Project provides a set of Open Source engines for BPMN, CMMN and DMN in Java.  They&#x27;re used around the globe to drive business critical applications in all kinds of architectures, whether orchestrating microservices or soft-wiring the behavior of the microservices themselves; embedded, as a service, on-premise or in the cloud.</p>\n<p>This talk introduces working with business processes, decision tables and case management with the open source Flowable libraries, through code examples and live demos.  Some of its unique dynamic process capabilities will be highlighted, as well as its future potential in emerging human interfaces.</p>\n",
+   "summaryAsHtml": "<p>The Flowable Project provides a set of Open Source engines for BPMN, CMMN and DMN in Java.  They&#x27;re used around the globe to drive business critical applications in all kinds of architectures, whether orchestrating microservices or soft-wiring the behavior of the microservices themselves; embedded, as a service, on-premise or in the cloud.</p>\n<p>This talk introduces working with business processes, decision tables and case management with the open source Flowable libraries, then shows some of its unique dynamic process capabilities being used to integrate Machine Learning into business processes.  All illustrated with demos and code.</p>\n",
    "id": "MZY-5099",
    "speakers": [
     {
@@ -8945,9 +8914,9 @@
      "name": "Joram Barrez"
     }
    ],
-   "title": "Introducing the Flowable Process Engines",
+   "title": "Introducing AI to the Flowable Process Engines",
    "lang": "en",
-   "summary": "The Flowable Project provides a set of Open Source engines for BPMN, CMMN and DMN in Java.  They're used around the globe to drive business critical applications in all kinds of architectures, whether orchestrating microservices or soft-wiring the behavior of the microservices themselves; embedded, as a service, on-premise or in the cloud.\r\n \r\nThis talk introduces working with business processes, decision tables and case management with the open source Flowable libraries, through code examples and live demos.  Some of its unique dynamic process capabilities will be highlighted, as well as its future potential in emerging human interfaces."
+   "summary": "The Flowable Project provides a set of Open Source engines for BPMN, CMMN and DMN in Java.  They're used around the globe to drive business critical applications in all kinds of architectures, whether orchestrating microservices or soft-wiring the behavior of the microservices themselves; embedded, as a service, on-premise or in the cloud.\r\n \r\nThis talk introduces working with business processes, decision tables and case management with the open source Flowable libraries, then shows some of its unique dynamic process capabilities being used to integrate Machine Learning into business processes.  All illustrated with demos and code."
   },
   "fromTime": "10:50",
   "toTimeMillis": 1510224000000,
@@ -12038,7 +12007,7 @@
    ],
    "track": "Server Side Java",
    "audienceLevel": "l2",
-   "summaryAsHtml": "<p>In this live coding session we&#x27;ll build a website from scratch using the Across platform modules.</p>\n<p>We&#x27;ll start off with a simple static website design that we&#x27;ll slice into Thymeleaf templates. Then we&#x27;ll add a domain model using a shared module that bundles our JPA (Hibernate) entities and their Spring Data repositories. We&#x27;ll add and customise an entire administration UI to manage our data, and we&#x27;ll wrap it up by adding some general web content management functionality.</p>\n<p>The purpose of this session is to provide a small showcase of some of the open source Across modules, and to demonstrate how they can be used to incrementally build a web application, while still retaining the full power of Spring based development.\nApart from the Across modules, the most important libraries used are Spring MVC, Spring Data and Thymeleaf.</p>\n<p>co-speaker : Steven Gentens</p>\n",
+   "summaryAsHtml": "<p>In this live coding session we&#x27;ll show how Across platform can help us solve 2 common challenges when creating fully custom web applications with Spring.</p>\n<h4>Creating an administration UI for your domain</h4>\n<p>In the first part, we&#x27;ll see how we can easily build an administration UI for managing our data. We&#x27;ll start by generating a simple application with an example domain model backed by JPA entities and Spring Data repositories. We&#x27;ll generate an admin UI from this model and go on to explain how it works and show some of the ways to customize and extend it.</p>\n<h4>Adding basic CMS features to your webapp</h4>\n<p>In the second part, we&#x27;ll focus on adding basic web content management functions. Starting from static markup in Thymeleaf, we&#x27;ll show how WebCmsModule can be used to create content sections editable by the user.</p>\n<p>The purpose of this session is to provide a small showcase of some of the open source Across modules. To demonstrate how they can be used to incrementally build a web application, while still retaining the full power of Spring based development.  Apart from the Across modules, the most important libraries used are JPA, Spring Data and Thymeleaf.</p>\n<p>co-speaker : Steven Gentens</p>\n",
    "id": "ZUG-5078",
    "speakers": [
     {
@@ -12052,7 +12021,7 @@
    ],
    "title": "Building Web Applications on Spring Framework Using the Across Platform",
    "lang": "en",
-   "summary": "In this live coding session we'll build a website from scratch using the Across platform modules.\r\n\r\nWe'll start off with a simple static website design that we'll slice into Thymeleaf templates. Then we'll add a domain model using a shared module that bundles our JPA (Hibernate) entities and their Spring Data repositories. We'll add and customise an entire administration UI to manage our data, and we'll wrap it up by adding some general web content management functionality.\r\n\r\nThe purpose of this session is to provide a small showcase of some of the open source Across modules, and to demonstrate how they can be used to incrementally build a web application, while still retaining the full power of Spring based development.\r\nApart from the Across modules, the most important libraries used are Spring MVC, Spring Data and Thymeleaf.\r\n\r\nco-speaker : Steven Gentens"
+   "summary": "In this live coding session we'll show how Across platform can help us solve 2 common challenges when creating fully custom web applications with Spring.\r\n\r\n#### Creating an administration UI for your domain\r\nIn the first part, we'll see how we can easily build an administration UI for managing our data. We'll start by generating a simple application with an example domain model backed by JPA entities and Spring Data repositories. We'll generate an admin UI from this model and go on to explain how it works and show some of the ways to customize and extend it.\r\n\r\n#### Adding basic CMS features to your webapp\r\nIn the second part, we'll focus on adding basic web content management functions. Starting from static markup in Thymeleaf, we'll show how WebCmsModule can be used to create content sections editable by the user.\r\n\r\nThe purpose of this session is to provide a small showcase of some of the open source Across modules. To demonstrate how they can be used to incrementally build a web application, while still retaining the full power of Spring based development.  Apart from the Across modules, the most important libraries used are JPA, Spring Data and Thymeleaf.\r\n\r\nco-speaker : Steven Gentens"
   },
   "fromTime": "16:40",
   "toTimeMillis": 1510245000000,
@@ -12398,17 +12367,9 @@
    ],
    "track": "Server Side Java",
    "audienceLevel": "l1",
-   "summaryAsHtml": "<p>After years of development of a new security sandbox, App Engine Standard now supports Java 8 and practically all of the JVM languages that runs atop of standard OpenJDK 8. In the new sandbox environment, we removed the Java security sandbox and the classes whitelist; this allows developers to use all features in the JVM and still being protected within a secure environment.</p>\n<p>App Engine can now support powerful frameworks like Spring Boot, Dropwizard with all the Java 8 language features. Best of all, you can run any JVM languages, including Groovy &amp; Kotlin.</p>\n<p>We&#x27;ll show you how to use Kotlin end-to-end to build from an Android mobile client and also the backend with Kotlin &amp; Spring Boot that can be quickly deployed and capable of scaling from 0 to infinity.</p>\n",
+   "summaryAsHtml": "<p>After years of development of a new security sandbox, App Engine Standard now supports Java 8 and practically all of the JVM languages that run atop of standard OpenJDK 8. In the new sandbox environment, we removed the Java security sandbox and the classes whitelist; this allows developers to use all features in the JVM and still be protected within a secure environment.</p>\n<p>App Engine can now support powerful frameworks like Spring Boot, Dropwizard with all the Java 8 language features. Best of all, you can run any JVM languages, including Groovy &amp; Kotlin.</p>\n<p>We&#x27;ll show you how to use Kotlin end-to-end to build from an Android mobile client and also the backend with Kotlin &amp; Spring Boot that can be quickly deployed and capable of scaling from 0 to infinity.</p>\n",
    "id": "HYM-8593",
    "speakers": [
-    {
-     "link": {
-      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/e07d5483e655803bcb74aff0bff1898888862f99",
-      "rel": "http://cfp.devoxx.be/api/profile/speaker",
-      "title": "Ludovic Champenois"
-     },
-     "name": "Ludovic Champenois"
-    },
     {
      "link": {
       "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/0989ca06b8777b26dbf137e28f60a6e1c3e472d5",
@@ -12416,11 +12377,19 @@
       "title": "Éamonn McManus"
      },
      "name": "Éamonn McManus"
+    },
+    {
+     "link": {
+      "href": "http://cfp.devoxx.be/api/conferences/DVBE17/speakers/e07d5483e655803bcb74aff0bff1898888862f99",
+      "rel": "http://cfp.devoxx.be/api/profile/speaker",
+      "title": "Ludovic Champenois"
+     },
+     "name": "Ludovic Champenois"
     }
    ],
    "title": "Serverless Kotlin with App Engine - fast deployment, infinite scalability",
    "lang": "en",
-   "summary": "After years of development of a new security sandbox, App Engine Standard now supports Java 8 and practically all of the JVM languages that runs atop of standard OpenJDK 8. In the new sandbox environment, we removed the Java security sandbox and the classes whitelist; this allows developers to use all features in the JVM and still being protected within a secure environment. \r\n\r\nApp Engine can now support powerful frameworks like Spring Boot, Dropwizard with all the Java 8 language features. Best of all, you can run any JVM languages, including Groovy & Kotlin.\r\n\r\nWe'll show you how to use Kotlin end-to-end to build from an Android mobile client and also the backend with Kotlin & Spring Boot that can be quickly deployed and capable of scaling from 0 to infinity."
+   "summary": "After years of development of a new security sandbox, App Engine Standard now supports Java 8 and practically all of the JVM languages that run atop of standard OpenJDK 8. In the new sandbox environment, we removed the Java security sandbox and the classes whitelist; this allows developers to use all features in the JVM and still be protected within a secure environment. \r\n\r\nApp Engine can now support powerful frameworks like Spring Boot, Dropwizard with all the Java 8 language features. Best of all, you can run any JVM languages, including Groovy & Kotlin.\r\n\r\nWe'll show you how to use Kotlin end-to-end to build from an Android mobile client and also the backend with Kotlin & Spring Boot that can be quickly deployed and capable of scaling from 0 to infinity."
   },
   "fromTime": "17:50",
   "toTimeMillis": 1510249200000,

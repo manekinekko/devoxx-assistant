@@ -14,11 +14,11 @@ describe("testing schedule", () => {
     expect.assertions(1);
     return getListOfSlots().then(slots => {
       writeJSON("src/services/__mock__/slots.json", slots);
-      expect(slots.length).toBe(255);
+      expect(slots.length).toBe(254);
     });
   });
 
-  [0, 28, 40, 27, 23, 15, 20, 22, 19, 12, 17].map((expectedValue, index) => {
+  [0, 27, 41, 27, 23, 15, 20, 22, 19, 12, 16].map((expectedValue, index) => {
     it(`should return ${expectedValue} topics for trackId=track.${index}`, () => {
       expect.assertions(1);
       return getTopicsByTrackId(`track.${index}`).then(slots =>
