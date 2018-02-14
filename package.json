@@ -32,7 +32,7 @@
         "actions-on-google": "^1.5.1",
         "moment": "^2.19.1",
         "ngrok": "^2.2.21",
-        "node-fetch": "^1.7.2",
+        "node-fetch": "^2.0.0",
         "debug": "^3.1.0",
         "jest": "^21.2.1",
         "optimist": "^0.6.1"
